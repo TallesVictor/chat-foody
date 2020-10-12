@@ -1,0 +1,80 @@
+<footer class="site-footer" role="contentinfo">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md-4 mb-5">
+                <h3>Sobre Nós</h3>
+                <p class="mb-5">Somos uma empresa, focada no resultado para você cliente e o restaurante, fazendo com que os pedidos seja mais simples e baratos</p>
+                <ul class="list-unstyled footer-link d-flex footer-social">
+                    <li><a href="#" class="p-2"><span class="fa fa-twitter"></span></a></li>
+                    <li><a href="#" class="p-2"><span class="fa fa-facebook"></span></a></li>
+                    <li><a href="#" class="p-2"><span class="fa fa-linkedin"></span></a></li>
+                    <li><a href="#" class="p-2"><span class="fa fa-instagram"></span></a></li>
+                </ul>
+
+            </div>
+            <div class="col-md-3 mb-5">
+                <h3>Mais Informações</h3>
+                <ul class="list-unstyled footer-link">
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Terms of Use</a></li>
+                    <li><a href="#">Disclaimers</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-md-center text-left">
+                <p>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright &copy;
+                    <script>
+                        document.write(new Date().getFullYear());
+                    </script> All rights reserved | This template is made with <i class="fa fa-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Modal Loguin -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Entrar no ChatFood</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="inputEmail4">Email</label>
+                            <input type="email" class="form-control" id="email">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="inputPassword4">Senha</label>
+                            <input type="password" class="form-control" id="pass">
+                        </div>
+                    </div>
+                </form>
+
+                <label *ngIf="loguin==false" class="text-center p-1 btn btn-danger w-100">Erro</label>
+                <label *ngIf="loguin==true" class="text-center p-1 btn btn-success w-100">Certo</label>
+
+            </div>
+            <div class="modal-footer">
+                <a type="button" style="margin-right:auto;cursor: pointer;" class="btn btn-link" [routerLink]="['/registro']" onclick="$('#exampleModalCenter').modal('hide');">Registrar</a>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary" (click)="login()">Entrar</button>
+            </div>
+        </div>
+    </div>
+</div>

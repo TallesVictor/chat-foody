@@ -1,0 +1,48 @@
+<header role="banner" class="pt-0" id="header">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark" style="background-color: #343a40 !important;border-bottom: 4px solid #ff7404;">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">ChatFood</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample05">
+                <ul class="navbar-nav ml-auto pl-lg-5 pl-0">
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/']">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/restaurante']" routerLinkActive="active"> Restaurante</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/cardapio']" routerLinkActive="active">Cardápio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#comentarios">Comentários</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/registro']" routerLinkActive="active">Cadastrar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/editar']" routerLinkActive="active">Editar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#blog">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/restaurante']" routerLinkActive="active">Sobre</a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item cta-btn">
+                        <a class="nav-link" onclick="$('#exampleModalCenter').modal('show');">Entrar</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+</header>
+<!-- END header -->
+<div id="espacoHeader"></div>

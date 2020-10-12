@@ -1,0 +1,43 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { HttpClientModule } from "@angular/common/http";
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { HomeComponent } from './views/home/home.component';
+import { SystemComponent } from './views/system/system.component';
+import { RegistroComponent } from './views/registro/registro.component';
+import { EditarComponent } from './views/editar/editar.component';
+import { CadCardapioComponent } from './views/cad-cardapio/cad-cardapio.component';
+import { ItemComponent } from './views/item/item.component';
+import { CardapioComponent } from './views/cardapio/cardapio.component';
+import { RestauranteComponent } from './views/restaurante/restaurante.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { FormsModule } from '@angular/forms';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    SystemComponent,
+    RegistroComponent,
+    EditarComponent,
+    CadCardapioComponent,
+    ItemComponent,
+    CardapioComponent,
+    RestauranteComponent,
+    HeaderComponent,
+    FooterComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }

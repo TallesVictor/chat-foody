@@ -1,0 +1,36 @@
+<div class="slider-wrap">
+
+    <section class="section bg-light top-slant-white bottom-slant-gray">
+
+        <div class="clearfix  pt-2 pb-3">
+            <div class="container-fluid">
+                <div class="row" data-aos="fade">
+                    <div class="col-md-12 text-center heading-wrap">
+                        <h2>CARDÁPIO</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row no-gutters">
+
+                <div class="col-md-6" *ngFor="let cardapio of cardapios; index as i;">
+
+                    <div class="sched d-block d-lg-flex">
+                        <div class="bg-image order-2" style="background-image: url('assets/img/dishes_{{i}}.jpg');" data-aos="fade"></div>
+                        <div class="text order-1">
+                            <a routerLink="/item/{{cardapio.id}}" routerLinkActive="active">
+                                <h3>{{cardapio.nome}}</h3>
+                                <p>{{cardapio.descricao}}</p>
+                            </a>
+                            <p class="text-primary h3">${{cardapio.valor}}</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,38 @@
+<div class="slider-wrap">
+
+    <section class="section bg-light top-slant-white bottom-slant-gray">
+
+        <div class="clearfix pb-5">
+        </div>
+        <!-- {{header.teste.length}} -->
+        <div class="container">
+            <div class="row no-gutters">
+                <div class="col-sm-12 border bg-white pl-2 text-dark" style="border-bottom:0px !important;background-color: #fffaf5 !important;">
+                    <a [routerLink]="[ '/cardapio' ]" title="Voltar"><i class="fas fa-arrow-left"></i></a> Restaurante São Sebastião - <label style="font-size: 0.8em;">R. Alves Silva  142, Santa Lúcia - Betim</label>
+                </div>
+            </div>
+            <div class="row no-gutters">
+                <div class="col-md-12">
+                    <div class="sched d-block d-lg-flex">
+                        <div class="bg-image order-2" style="background-image: url('assets/img/dishes_{{item.id}}.jpg');" data-aos="fade"></div>
+                        <div class="text order-1">
+                            <h3>{{item.nome}}</h3>
+                            <ul>
+                                <li *ngFor="let ingrediente of item.ingredientes">
+                                    {{ingrediente}}
+                                </li>
+                            </ul>
+                            <p class="text-primary h3 text-center">R${{item.valor}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row no-gutters">
+                <div class="col-sm-12">
+                    <button class="btn btn-success w-100">Adicionar&nbsp;<i class="fas fa-cart-plus"></i></button>
+                </div>
+            </div>
+            <!-- <button class="btn btn-outline-primary" (click)="setItem()">text</button> -->
+        </div>
+    </section>
+</div>

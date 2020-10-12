@@ -1,0 +1,122 @@
+<section class="section bg-light top-slant-white bottom-slant-gray">
+
+    <div class="clearfix pt-3 pb-3">
+        <div class="container-fluid">
+            <div class="row" data-aos="fade">
+                <div class="col-sm-12 text-center heading-wrap">
+                    <h2 class="pt-2">Cadastrar</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="form-group">
+                        <label for="nomeCad">Nome Proprietário</label>
+                        <input type="text" class="form-control" id="nomeCad" name="nomeCad" [(ngModel)]="usuario.nome" required placeholder="Nome do Proprietário ">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row ">
+                <div class="col-sm ">
+                    <div class="form-group ">
+                        <label for="emailCad">Email</label>
+                        <input type="email" class="form-control " id="emailCad" name="emailCad" [(ngModel)]="usuario.email" required placeholder="Email ">
+                    </div>
+                </div>
+                <div class="col-sm ">
+                    <div class="form-group ">
+                        <label for="dataNascimento">Data de Nascimento</label>
+                        <input type="date" class="form-control" id="dataNascimento" name="dataNascimento" [(ngModel)]="usuario.dataNascimento" required placeholder="Data de nascimento">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row ">
+                <div class="col-sm ">
+                    <div class="form-group ">
+                        <label for="senhaCad">Senha</label>
+                        <input type="password" class="form-control " id="senhaCad" name="senhaCad" [(ngModel)]="usuario.senha" required placeholder="Senha">
+                    </div>
+                </div>
+                <div class="col-sm ">
+                    <div class="form-group ">
+                        <label for="senhaAux">Confirmação da senha</label>
+                        <input type="password" class="form-control" id="senhaAux" name="senhaAux" [(ngModel)]="senhaAux" (keyup)="conferirSenha()" required placeholder="Confirmação da Senha">
+                        <span class="text-danger text-center pl-2">{{avisoSenhaAux}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+            <div class="row justify-content-center ">
+                <div class="col-sm-4 ">
+                    <div class="form-group ">
+                        <input type="text" class="form-control " id="cnpj" name="cnpj" [(ngModel)]="restaurante.cnpj" (change)="consultaCNPJ()" required placeholder="CNPJ ">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row ">
+                <div class="col-sm ">
+                    <div class="form-group ">
+                        <label for="formGroupExampleInput ">Estabelecimento</label>
+                        <input type="text" class="form-control " id="razao" name="razao" [(ngModel)]="restaurante.razaoSocial" required placeholder="Razão Social do Estabelecimento ">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row ">
+                <div class="col-sm-2 ">
+                    <div class="form-group ">
+                        <label for="formGroupExampleInput ">CEP</label>
+                        <input type="text" class="form-control " id="cep" name="cep" [(ngModel)]="restaurante.cep" required placeholder="CEP ">
+                    </div>
+                </div>
+                <div class="col-sm-2 ">
+                    <div class="form-group ">
+                        <label for="formGroupExampleInput ">Estado</label>
+                        <input type="text" class="form-control " id="estado" name="estado" [(ngModel)]="restaurante.estado" required placeholder="Estado ">
+                    </div>
+                </div>
+                <div class="col-sm ">
+                    <div class="form-group ">
+                        <label for="formGroupExampleInput ">Cidade</label>
+                        <input type="text" class="form-control " id="cidade" name="cidade" [(ngModel)]="restaurante.cidade" required placeholder="Cidade ">
+                    </div>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-sm-4 ">
+                    <div class="form-group ">
+                        <label for="formGroupExampleInput ">Rua</label>
+                        <input type="text" class="form-control " id="rua" name="rua" [(ngModel)]="restaurante.rua" required placeholder="Rua ">
+                    </div>
+                </div>
+                <div class="col-sm-2 ">
+                    <div class="form-group ">
+                        <label for="formGroupExampleInput ">Número</label>
+                        <input type="text" class="form-control " id="numero" name="numero" [(ngModel)]="restaurante.numero" required placeholder="Número ">
+                    </div>
+                </div>
+                <div class="col-sm ">
+                    <div class="form-group ">
+                        <label for="formGroupExampleInput ">Complemento</label>
+                        <input type="text" class="form-control " id="complemento" name="complemento" [(ngModel)]="restaurante.complemento" required placeholder="Complemento ">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mt-3 ">
+                <div class="col-sm ">
+                    <button class="btn btn-primary w-100 " style="cursor:pointer " (click)="cadastrar()" id="btnCadastrar">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+<!-- .section -->
