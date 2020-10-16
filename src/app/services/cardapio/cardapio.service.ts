@@ -95,8 +95,42 @@ export class CardapioService {
     return this.http.post<Cardapio>(`${URL_API}/cardapio`, JSON.parse(JSON.stringify(cad)));
   }
 
+  cadastrar(item: Cardapio){
+    const id = this.cardapio.length + 2;
+    item.id = id;
+
+    this.cardapio.push(item);
+  }
+
+  editar(item: Cardapio){
+    for (let obj of this.cardapio){
+      if (item.id === obj.id){
+        obj = item;
+        break;
+      }
+    }
+  }
+
+  getItemById(id: number){
+    for (const obj of this.cardapio){
+      if (id === obj.id){
+        return obj;
+      }
+    }
+    return null;
+  }
+
   getAll(): Array<Cardapio> {
     return this.cardapio;
+  }
+
+  deletar(id: number){
+    for (let i = 0; i < this.cardapio.length; i++){
+      if (id === this.cardapio[i].id){
+        this.cardapio.splice(i, 1);
+        break;
+      }
+    }
   }
 
   search(id: number): Cardapio {

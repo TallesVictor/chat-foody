@@ -9,6 +9,8 @@ import { CadCardapioComponent } from './views/cad-cardapio/cad-cardapio.componen
 import { ItemComponent } from './views/item/item.component';
 import { CardapioComponent } from './views/cardapio/cardapio.component';
 import { RestauranteComponent } from './views/restaurante/restaurante.component';
+import { CadastrarItemComponent } from './views/cadastrar-item/cadastrar-item.component';
+import { EditarItemComponent } from './views/editar-item/editar-item.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,6 +21,8 @@ const routes: Routes = [
   { path: 'item/:id', component: ItemComponent },
   { path: 'cardapio', component: CardapioComponent },
   { path: 'restaurante', component: RestauranteComponent },
+  { path: 'cadastrar-item', component: CadastrarItemComponent },
+  { path: 'editar-item/:id', component: EditarItemComponent}
 ];
 
 @NgModule({

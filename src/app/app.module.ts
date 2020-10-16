@@ -16,6 +16,8 @@ import { RestauranteComponent } from './views/restaurante/restaurante.component'
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
+import { CadastrarItemComponent } from './views/cadastrar-item/cadastrar-item.component';
+import { EditarItemComponent } from './views/editar-item/editar-item.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { FormsModule } from '@angular/forms';
     RestauranteComponent,
     HeaderComponent,
     FooterComponent,
+    CadastrarItemComponent,
+    EditarItemComponent,
   ],
   imports: [
     BrowserModule,

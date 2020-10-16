@@ -7,6 +7,7 @@
                 <div class="row" data-aos="fade">
                     <div class="col-md-12 text-center heading-wrap">
                         <h2>CARDÁPIO</h2>
+                        <p><a routerLink="/cadastrar-item" class="btn btn-primary btn-sm mt-5">Novo Item</a></p>
                     </div>
                 </div>
             </div>
@@ -25,6 +26,8 @@
                                 <p>{{cardapio.descricao}}</p>
                             </a>
                             <p class="text-primary h3">${{cardapio.valor}}</p>
+                            <p><a routerLink="/editar-item/{{cardapio.id}}" class="btn btn-primary btn-sm mt-5">Editar</a></p>
+                            <p><a class="btn btn-danger btn-sm text-white" (click)="deletar(cardapio.id)">Deletar</a></p>
                         </div>
                     </div>
 
