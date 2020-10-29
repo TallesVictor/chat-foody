@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { UserService } from '../services/user/user.service';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
@@ -7,26 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
   usuarios = [{ id: 0, email: 'admin@admin', senha: 'admin' }];
-  loguin: boolean = null;
-  constructor() {}
+  loguin: Boolean = null;
+  email: string = null;
+  senha: string = null;
+
+  constructor(private user: UserService) {}
 
   ngOnInit(): void {}
 
-  login() {
-    const email = (document.getElementById('email') as HTMLInputElement).value;
-    const pass = (document.getElementById('pass') as HTMLInputElement).value;
-
-    this.usuarios.forEach((element) => {
-      if (element.email == email && element.senha == pass) {
-        this.loguin = true;
-      }
-    });
-
-    console.log(email, pass);
-
-    if (this.loguin != true) {
+  login(): void {
+    if (this.email && this.senha) {
+      this.loguin = this.user.login(this.email, this.senha);
+    }else{
       this.loguin = false;
+      alert('Email ou senha não preenchido');
     }
-
   }
 }

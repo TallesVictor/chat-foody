@@ -11,7 +11,7 @@ export class AppComponent {
   ngOnInit(): void {
     let heigth = document.getElementById("header").offsetHeight;
     document.getElementById("espacoHeader").style.height= (heigth-40)+"px";
-    
+
   }
 
 }

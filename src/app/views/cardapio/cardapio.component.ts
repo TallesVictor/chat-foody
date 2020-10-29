@@ -22,6 +22,7 @@ export class CardapioComponent implements OnInit {
  }
 
   ngOnInit(): void {
+    // sessionStorage.setItem("lastname", "Smith");
   }
 
   deletar(id: number){
