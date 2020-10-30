@@ -1,9 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/Http';
+import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
 
-import { Observable } from 'rxjs';
-import { URL_API } from '../../app.api';
+import { Observable, throwError } from 'rxjs';
+import { TOKEN, URL_API } from '../../app.api';
 import { Cardapio } from '../../models/cardapio.model';
+import { ItemComponent } from 'src/app/views/item/item.component';
+
+const httpOptions = {
+  headers: new HttpHeaders({'Content-Type': 'application/json', 'Authorization': TOKEN})
+};
 
 @Injectable({
   providedIn: 'root',
@@ -95,42 +100,33 @@ export class CardapioService {
     return this.http.post<Cardapio>(`${URL_API}/cardapio`, JSON.parse(JSON.stringify(cad)));
   }
 
-  cadastrar(item: Cardapio){
-    const id = this.cardapio.length + 2;
-    item.id = id;
+  cadastrar(item: Cardapio): Observable<any>{
+    //const id = this.cardapio.length + 2;
+    //item.id = id;
+    const codigo = new Date().getMilliseconds();
+    item.id = Number(codigo);
 
-    this.cardapio.push(item);
+    const itemPost = JSON.stringify(item);
+
+    return this.http.post(`${URL_API}/prato/create`, itemPost, httpOptions);
   }
 
-  editar(item: Cardapio){
-    for (let obj of this.cardapio){
-      if (item.id === obj.id){
-        obj = item;
-        break;
-      }
-    }
+  editar(item: Cardapio): Observable<any>{
+    const itemPostAlterar = JSON.stringify(item);
+    return this.http.post(`${URL_API}/cardapio/alterar`, itemPostAlterar, httpOptions);
   }
 
-  getItemById(id: number){
-    for (const obj of this.cardapio){
-      if (id === obj.id){
-        return obj;
-      }
-    }
-    return null;
+  getItemById(id: number): Observable<Cardapio>{
+    return this.http.get<Cardapio>(`${URL_API}/prato/` + id);
   }
 
-  getAll(): Array<Cardapio> {
-    return this.cardapio;
+  getAll(): Observable<Cardapio[]> {
+    return this.http.get<Cardapio[]>(`${URL_API}/cardapio/6666000111`, httpOptions);
   }
 
-  deletar(id: number){
-    for (let i = 0; i < this.cardapio.length; i++){
-      if (id === this.cardapio[i].id){
-        this.cardapio.splice(i, 1);
-        break;
-      }
-    }
+  deletar(id: number): Observable<any>{
+    console.log(id);
+    return this.http.delete(`${URL_API}/cardapio/apagar/` + id, httpOptions);
   }
 
   search(id: number): Cardapio {

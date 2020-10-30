@@ -25,7 +25,8 @@ export class CadastrarItemComponent implements OnInit {
   }
 
   cadastrar() {
-    this.cardapioService.cadastrar(this.item);
-    this.router.navigateByUrl('/cardapio');
+    this.cardapioService.cadastrar(this.item).subscribe((item: Cardapio) => {
+      this.router.navigateByUrl('/cardapio');
+    });
   }
 }
