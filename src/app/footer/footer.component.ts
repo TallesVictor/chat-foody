@@ -1,27 +1,50 @@
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 
 import { UserService } from '../services/user/user.service';
+import { HeaderComponent } from '../header/header.component';
+
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css'],
 })
 export class FooterComponent implements OnInit {
-  usuarios = [{ id: 0, email: 'admin@admin', senha: 'admin' }];
-  loguin: Boolean = null;
-  email: string = null;
-  senha: string = null;
-
-  constructor(private user: UserService) {}
+  loginForm: FormGroup;
+  erroLogin: string;
+  constructor(
+    private user: UserService,
+    private fb: FormBuilder,
+  ) {
+    this.loginForm = fb.group({
+      email: ['talles@talles.com', [Validators.email, Validators.required]],
+      senha: ['teste', [Validators.required, Validators.minLength(4)]],
+    });
+    // carregandoService.carregando(true);
+    console.log(HeaderComponent.toString());
+  }
 
   ngOnInit(): void {}
 
-  login(): void {
-    if (this.email && this.senha) {
-      this.loguin = this.user.login(this.email, this.senha);
-    }else{
-      this.loguin = false;
-      alert('Email ou senha não preenchido');
-    }
+  submit(): void {
+    const jsonLogin = this.loginForm.getRawValue();
+    this.user.getUsuario(jsonLogin.email, jsonLogin.senha).subscribe(
+      (data) => {
+        localStorage.setItem('token', data.access_token);
+        return true;
+      },
+      (error) => {
+        console.log(error);
+        if (error.status === 401) {
+          this.erroLogin = 'Login inválido';
+        }
+      }
+    );
   }
 }

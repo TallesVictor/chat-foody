@@ -7,29 +7,18 @@ import { URL_API } from '../../app.api';
 import { TOKEN } from '../../app.api';
 
 const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json', 'Authorization': TOKEN})
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    Authorization: TOKEN,
+  }),
 };
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-
   constructor(private http: HttpClient) {}
 
-  login(email: string, password: string): Boolean {
-    this.getUsuario(email, password).subscribe(
-      (data) => {
-        localStorage.setItem('token', data.access_token);
-        return true;
-      },
-      (error) => {
-        console.log(error);
-        alert(this.erroLoguin(error.status));
-      }
-    );
-    return false;
-  }
 
   isLogin(): Boolean {
     if (localStorage.getItem('token')) {
@@ -39,15 +28,9 @@ export class UserService {
   }
 
   getUsuario(email: string, password: string): Observable<User> {
-    // const user: User = {
-    //   email,
-    //   password,
-    //   token: '',
-    //   remember_me: false,
-    // };
     const user: User = {
-      email: 'talles@talles.com',
-      password: 'teste',
+      email,
+      password,
       authorization: '',
       access_token: null,
       remember_me: false,
@@ -62,12 +45,5 @@ export class UserService {
   validToken(): Observable<any> {
     return this.http.get<any>(`${URL_API}/auth/user`, httpOptions);
   }
-
-  erroLoguin(err): String {
-    if (err === 401) {
-      return 'Loguin inválido';
-    }
-  }
-
 
 }

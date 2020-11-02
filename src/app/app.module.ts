@@ -15,7 +15,7 @@ import { CardapioComponent } from './views/cardapio/cardapio.component';
 import { RestauranteComponent } from './views/restaurante/restaurante.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CadastrarItemComponent } from './views/cadastrar-item/cadastrar-item.component';
 import { EditarItemComponent } from './views/editar-item/editar-item.component';
 
@@ -39,7 +39,8 @@ import { EditarItemComponent } from './views/editar-item/editar-item.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
