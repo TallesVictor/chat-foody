@@ -9,6 +9,7 @@ import {
 
 import { UserService } from '../services/user/user.service';
 import { HeaderComponent } from '../header/header.component';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-footer',
@@ -18,32 +19,32 @@ import { HeaderComponent } from '../header/header.component';
 export class FooterComponent implements OnInit {
   loginForm: FormGroup;
   erroLogin: string;
+
   constructor(
     private user: UserService,
-    private fb: FormBuilder,
-  ) {
+    private fb: FormBuilder) {
     this.loginForm = fb.group({
       email: ['talles@talles.com', [Validators.email, Validators.required]],
       senha: ['teste', [Validators.required, Validators.minLength(4)]],
     });
-    // carregandoService.carregando(true);
-    console.log(HeaderComponent.toString());
   }
 
   ngOnInit(): void {}
 
   submit(): void {
+    $('#carregando').show();
     const jsonLogin = this.loginForm.getRawValue();
     this.user.getUsuario(jsonLogin.email, jsonLogin.senha).subscribe(
       (data) => {
         localStorage.setItem('token', data.access_token);
-        return true;
+        location.reload();
       },
       (error) => {
         console.log(error);
         if (error.status === 401) {
           this.erroLogin = 'Login inválido';
         }
+        $('#carregando').hide();
       }
     );
   }

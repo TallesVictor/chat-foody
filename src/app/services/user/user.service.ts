@@ -19,14 +19,6 @@ const httpOptions = {
 export class UserService {
   constructor(private http: HttpClient) {}
 
-
-  isLogin(): Boolean {
-    if (localStorage.getItem('token')) {
-      return true;
-    }
-    return false;
-  }
-
   getUsuario(email: string, password: string): Observable<User> {
     const user: User = {
       email,
@@ -44,6 +36,10 @@ export class UserService {
 
   validToken(): Observable<any> {
     return this.http.get<any>(`${URL_API}/auth/user`, httpOptions);
+  }
+
+  logout(): Observable<any> {
+    return this.http.get<any>(`${URL_API}/auth/logout`, httpOptions);
   }
 
 }
