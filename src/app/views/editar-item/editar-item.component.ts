@@ -21,15 +21,18 @@ export class EditarItemComponent implements OnInit {
 
   constructor(private routerActive: ActivatedRoute, private router: Router, private cardapioService: CardapioService ) {
     const id = Number(this.routerActive.snapshot.paramMap.get('id'));
-    this.item = this.cardapioService.getItemById(id);
+    this.cardapioService.getItemById(id).subscribe((cardapio: Cardapio) => {
+      this.item = cardapio;
+    });
   }
 
   ngOnInit(): void {
   }
 
   editar(){
-    this.cardapioService.editar(this.item);
-    this.router.navigateByUrl('/cardapio');
+    this.cardapioService.editar(this.item).subscribe((item: Cardapio) => {
+      this.router.navigateByUrl('/cardapio');
+    });
   }
 
 }

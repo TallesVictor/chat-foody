@@ -18,7 +18,9 @@ export class CardapioComponent implements OnInit {
   // }
 
   constructor(private router: Router, private cardapioService: CardapioService) {
-   this.cardapios = cardapioService.getAll();
+    this.cardapioService.getAll().subscribe((data: Cardapio[]) => {
+      this.cardapios = data;
+    });
  }
 
   ngOnInit(): void {
@@ -26,6 +28,12 @@ export class CardapioComponent implements OnInit {
   }
 
   deletar(id: number){
-    this.cardapioService.deletar(id);
+    this.cardapioService.deletar(id).subscribe((respota: any) => {
+
+      this.cardapioService.getAll().subscribe((data: Cardapio[]) => {
+        this.cardapios = data;
+      });
+
+    });
   }
 }

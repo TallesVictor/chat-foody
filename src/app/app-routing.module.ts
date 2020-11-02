@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'editar', component: EditarComponent },
   { path: 'cad-cardapio', component: CadCardapioComponent },
   { path: 'item/:id', component: ItemComponent },
-  { path: 'cardapio', component: CardapioComponent },
+  { path: 'cardapio/:id', component: CardapioComponent },
   { path: 'restaurante', component: RestauranteComponent },
   { path: 'cadastrar-item', component: CadastrarItemComponent },
   { path: 'editar-item/:id', component: EditarItemComponent}
