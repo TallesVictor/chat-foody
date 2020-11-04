@@ -5,6 +5,7 @@ import { UsuarioService } from '../services/usuario/usuario.service';
 import { Usuario } from '../models/usuario.model';
 import { Router } from '@angular/router';
 import * as $ from 'jquery';
+import { LIBRARY } from 'src/app/app.library';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -26,14 +27,14 @@ export class HeaderComponent implements OnInit {
 
   login(): void {
     if (localStorage.getItem('token')) {
-      $('#carregando').show();
+      LIBRARY.carregando();
       this.user.validToken().subscribe(
         (data) => {
           this.usuario.codigo = 2;
           this.usuario.nome = data.name;
           this.usuario.email = data.email;
           this.logado = true;
-          $('#carregando').hide();
+          LIBRARY.ocultar();
         },
         (error) => {
           console.log(error.status);
@@ -41,14 +42,14 @@ export class HeaderComponent implements OnInit {
             localStorage.removeItem('token');
             this.router.navigateByUrl('/');
           }
-          $('#carregando').hide();
+          LIBRARY.ocultar();
         }
       );
     }
   }
 
   logout() {
-    $('#carregando').show();
+    LIBRARY.carregando();
     this.user.logout().subscribe(
       (data) => {
         sessionStorage.removeItem('token');
@@ -56,7 +57,7 @@ export class HeaderComponent implements OnInit {
       },
       (error) => {
         alert('Erro');
-        $('#carregando').hide();
+        LIBRARY.ocultar();
       }
     );
   }

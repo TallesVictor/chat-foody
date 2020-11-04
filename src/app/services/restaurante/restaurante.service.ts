@@ -1,16 +1,30 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { URL_API } from 'src/app/app.api';
+import { URL_API, TOKEN } from 'src/app/app.api';
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    Authorization: TOKEN,
+  }),
+};
 @Injectable({
   providedIn: 'root',
 })
 export class RestauranteService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
   public consultaCNPJ(cnpj: string): Observable<any> {
-    return this.httpClient.get(`${URL_API}/cnpj/` + cnpj.replace(/\D/g, ''));
+    return this.http.get(`${URL_API}/cnpj/` + cnpj.replace(/\D/g, ''));
+  }
+
+  salvar(json: JSON): Observable<any> {
+    return this.http.post<any>(
+      `${URL_API}/restaurante/salvar`,
+      json,
+      httpOptions
+    );
   }
 }

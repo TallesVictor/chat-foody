@@ -10,13 +10,13 @@
         </div>
     </div>
 
-    <form>
-        <div class="container">
+    <div class="container">
+        <form [formGroup]="cadastrarForm" (ngSubmit)="cadastrar()">
             <div class="row">
                 <div class="col-sm">
                     <div class="form-group">
                         <label for="nomeCad">Nome Proprietário</label>
-                        <input type="text" class="form-control" id="nomeCad" name="nomeCad" [(ngModel)]="usuario.nome" required placeholder="Nome do Proprietário ">
+                        <input type="text" class="form-control" formControlName="proprietario" placeholder="Nome do Proprietário ">
                     </div>
                 </div>
             </div>
@@ -25,13 +25,13 @@
                 <div class="col-sm ">
                     <div class="form-group ">
                         <label for="emailCad">Email</label>
-                        <input type="email" class="form-control " id="emailCad" name="emailCad" [(ngModel)]="usuario.email" required placeholder="Email ">
+                        <input type="email" class="form-control " formControlName="email" placeholder="Email ">
                     </div>
                 </div>
                 <div class="col-sm ">
                     <div class="form-group ">
-                        <label for="dataNascimento">Data de Nascimento</label>
-                        <input type="date" class="form-control" id="dataNascimento" name="dataNascimento" [(ngModel)]="usuario.dataNascimento" required placeholder="Data de nascimento">
+                        <label for="telefone">Telefone</label>
+                        <input type="text" class="form-control" formControlName="telefone" placeholder="Data de nascimento">
                     </div>
                 </div>
             </div>
@@ -40,13 +40,13 @@
                 <div class="col-sm ">
                     <div class="form-group ">
                         <label for="senhaCad">Senha</label>
-                        <input type="password" class="form-control " id="senhaCad" name="senhaCad" [(ngModel)]="usuario.senha" required placeholder="Senha">
+                        <input type="password" class="form-control " formControlName="senha" placeholder="Senha">
                     </div>
                 </div>
                 <div class="col-sm ">
                     <div class="form-group ">
                         <label for="senhaAux">Confirmação da senha</label>
-                        <input type="password" class="form-control" id="senhaAux" name="senhaAux" [(ngModel)]="senhaAux" (keyup)="conferirSenha()" required placeholder="Confirmação da Senha">
+                        <input type="password" class="form-control" formControlName="confirmacao_senha" (keyup)="conferirSenha()" required placeholder="Confirmação da Senha">
                         <span class="text-danger text-center pl-2">{{avisoSenhaAux}}</span>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
             <div class="row justify-content-center ">
                 <div class="col-sm-4 ">
                     <div class="form-group ">
-                        <input type="text" class="form-control " id="cnpj" name="cnpj" [(ngModel)]="restaurante.cnpj" (change)="consultaCNPJ()" required placeholder="CNPJ ">
+                        <input type="text" class="form-control " formControlName="cnpj" (change)="consultaCNPJ()" required placeholder="CNPJ ">
                     </div>
                 </div>
             </div>
@@ -65,7 +65,7 @@
                 <div class="col-sm ">
                     <div class="form-group ">
                         <label for="formGroupExampleInput ">Estabelecimento</label>
-                        <input type="text" class="form-control " id="razao" name="razao" [(ngModel)]="restaurante.razaoSocial" required placeholder="Razão Social do Estabelecimento ">
+                        <input type="text" class="form-control " formControlName="razao_social" placeholder="Razão Social do Estabelecimento ">
                     </div>
                 </div>
             </div>
@@ -74,19 +74,19 @@
                 <div class="col-sm-2 ">
                     <div class="form-group ">
                         <label for="formGroupExampleInput ">CEP</label>
-                        <input type="text" class="form-control " id="cep" name="cep" [(ngModel)]="restaurante.cep" required placeholder="CEP ">
+                        <input type="text" class="form-control " formControlName="cep" placeholder="CEP ">
                     </div>
                 </div>
                 <div class="col-sm-2 ">
                     <div class="form-group ">
                         <label for="formGroupExampleInput ">Estado</label>
-                        <input type="text" class="form-control " id="estado" name="estado" [(ngModel)]="restaurante.estado" required placeholder="Estado ">
+                        <input type="text" class="form-control " formControlName="estado" placeholder="Estado ">
                     </div>
                 </div>
                 <div class="col-sm ">
                     <div class="form-group ">
                         <label for="formGroupExampleInput ">Cidade</label>
-                        <input type="text" class="form-control " id="cidade" name="cidade" [(ngModel)]="restaurante.cidade" required placeholder="Cidade ">
+                        <input type="text" class="form-control " formControlName="cidade" placeholder="Cidade ">
                     </div>
                 </div>
             </div>
@@ -94,29 +94,51 @@
                 <div class="col-sm-4 ">
                     <div class="form-group ">
                         <label for="formGroupExampleInput ">Rua</label>
-                        <input type="text" class="form-control " id="rua" name="rua" [(ngModel)]="restaurante.rua" required placeholder="Rua ">
+                        <input type="text" class="form-control " formControlName="rua" placeholder="Rua ">
                     </div>
                 </div>
                 <div class="col-sm-2 ">
                     <div class="form-group ">
                         <label for="formGroupExampleInput ">Número</label>
-                        <input type="text" class="form-control " id="numero" name="numero" [(ngModel)]="restaurante.numero" required placeholder="Número ">
+                        <input type="text" class="form-control " formControlName="numero" placeholder="Número ">
                     </div>
                 </div>
                 <div class="col-sm ">
                     <div class="form-group ">
                         <label for="formGroupExampleInput ">Complemento</label>
-                        <input type="text" class="form-control " id="complemento" name="complemento" [(ngModel)]="restaurante.complemento" required placeholder="Complemento ">
+                        <input type="text" class="form-control " formControlName="complemento" placeholder="Complemento ">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <div class="form-group ">
+                        <label for="formGroupExampleInput ">Restaurante</label>
+                        <textarea rows="3" type="text" class="form-control w-100" formControlName="descricao" placeholder="Conte um pouco sobre o restaurante"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="erro">
+                <div class="col-sm text-center">
+                    <div class="form-group bg-danger border border-danger rounded">
+                        <label class="text-white pt-2">{{erro}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="sucesso">
+                <div class="col-sm text-center">
+                    <div class="form-group bg-success border border-white rounded">
+                        <label class="text-white pt-2">{{sucesso}}</label>
                     </div>
                 </div>
             </div>
 
             <div class="row justify-content-center mt-3 ">
-                <div class="col-sm ">
-                    <button class="btn btn-primary w-100 " style="cursor:pointer " (click)="cadastrar()" id="btnCadastrar">Cadastrar</button>
+                <div class="col-sm">
+                    <button type="submit" class="btn btn-primary" id="btnCadastrar" [disabled]="!cadastrarForm.valid">Cadastrar</button>
                 </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </section>
 <!-- .section -->

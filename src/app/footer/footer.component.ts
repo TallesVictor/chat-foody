@@ -10,7 +10,7 @@ import {
 import { UserService } from '../services/user/user.service';
 import { HeaderComponent } from '../header/header.component';
 import * as $ from 'jquery';
-
+import { LIBRARY } from 'src/app/app.library';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
@@ -20,9 +20,7 @@ export class FooterComponent implements OnInit {
   loginForm: FormGroup;
   erroLogin: string;
 
-  constructor(
-    private user: UserService,
-    private fb: FormBuilder) {
+  constructor(private user: UserService, private fb: FormBuilder) {
     this.loginForm = fb.group({
       email: ['talles@talles.com', [Validators.email, Validators.required]],
       senha: ['teste', [Validators.required, Validators.minLength(4)]],
@@ -32,7 +30,7 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {}
 
   submit(): void {
-    $('#carregando').show();
+    LIBRARY.carregando();
     const jsonLogin = this.loginForm.getRawValue();
     this.user.getUsuario(jsonLogin.email, jsonLogin.senha).subscribe(
       (data) => {
@@ -44,7 +42,7 @@ export class FooterComponent implements OnInit {
         if (error.status === 401) {
           this.erroLogin = 'Login inválido';
         }
-        $('#carregando').hide();
+        LIBRARY.ocultar();
       }
     );
   }

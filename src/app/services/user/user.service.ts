@@ -3,8 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { User } from 'src/app/models/user.model';
-import { URL_API } from '../../app.api';
-import { TOKEN } from '../../app.api';
+import { URL_API, TOKEN } from '../../app.api';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,6 +17,10 @@ const httpOptions = {
 })
 export class UserService {
   constructor(private http: HttpClient) {}
+
+  salvar(json): Observable<any> {
+    return this.http.post<any>(`${URL_API}/auth/signup`, json, httpOptions);
+  }
 
   getUsuario(email: string, password: string): Observable<User> {
     const user: User = {
@@ -41,5 +44,4 @@ export class UserService {
   logout(): Observable<any> {
     return this.http.get<any>(`${URL_API}/auth/logout`, httpOptions);
   }
-
 }
