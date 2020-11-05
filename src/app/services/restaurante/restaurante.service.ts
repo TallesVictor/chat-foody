@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { URL_API, TOKEN } from 'src/app/app.api';
+import { Restaurante } from 'src/app/models/restaurante.model';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -27,4 +28,12 @@ export class RestauranteService {
       httpOptions
     );
   }
+
+  view(): Observable<any> {
+    return this.http.get<Restaurante>(
+      `${URL_API}/restaurante/view`,
+      httpOptions
+    );
+  }
+
 }

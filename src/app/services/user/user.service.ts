@@ -22,6 +22,14 @@ export class UserService {
     return this.http.post<any>(`${URL_API}/auth/signup`, json, httpOptions);
   }
 
+  editar(json): Observable<any> {
+    return this.http.put<any>(
+      `${URL_API}/restaurante/alterar`,
+      json,
+      httpOptions
+    );
+  }
+
   getUsuario(email: string, password: string): Observable<User> {
     const user: User = {
       email,

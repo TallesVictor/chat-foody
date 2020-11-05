@@ -1,113 +1,151 @@
 <section class="section bg-light top-slant-white bottom-slant-gray">
 
-    <div class="clearfix pt-2 pb-3">
+    <div class="clearfix pt-3 pb-3">
         <div class="container-fluid">
             <div class="row" data-aos="fade">
                 <div class="col-sm-12 text-center heading-wrap">
-                    <h2 class="pt-2">Editar Registro</h2>
+                    <h2 class="pt-2">Editar</h2>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="container">
+        <form [formGroup]="cadastrarForm" (ngSubmit)="editar()">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="form-group">
+                        <label for="nomeCad">Nome Proprietário</label>
+                        <input type="text" class="form-control" formControlName="proprietario" placeholder="Nome do Proprietário ">
+                    </div>
+                </div>
+            </div>
 
-        <div class="row">
-            <div class="col-sm">
-                <div class="form-group">
-                    <label for="formGroupExampleInput">Nome Proprietário</label>
-                    <input type="text" class="form-control" id="nome" required placeholder="Nome do Proprietário" value="Josue Silva Montes">
+            <div class="row ">
+                <div class="col-sm ">
+                    <div class="form-group ">
+                        <label for="emailCad">Email</label>
+                        <input type="email" class="form-control " formControlName="email" placeholder="Email ">
+                    </div>
+                </div>
+                <div class="col-sm ">
+                    <div class="form-group ">
+                        <label for="telefone">Telefone</label>
+                        <input type="text" class="form-control" formControlName="telefone" placeholder="Data de nascimento">
+                    </div>
                 </div>
             </div>
-            <div class="col-sm">
-                <div class="form-group">
-                    <label for="formGroupExampleInput">CPF</label>
-                    <input type="text" class="form-control" id="nome" required placeholder="CPF" value="260.179.760-60">
-                </div>
-            </div>
-        </div>
 
-        <div class=" row">
-            <div class="col-sm">
-                <div class="form-group">
-                    <label for="formGroupExampleInput">Email</label>
-                    <input type="email" class="form-control" id="email" required placeholder="Email" value="josue@gmail.com">
+            <div class="row ">
+                <div class="col-sm ">
+                    <div class="form-group ">
+                        <label for="senhaCad">Senha</label>
+                        <input type="password" class="form-control " formControlName="senha" (keyup)="conferirSenha()" placeholder="Senha">
+                    </div>
+                </div>
+                <div class="col-sm ">
+                    <div class="form-group ">
+                        <label for="senhaAux">Confirmação da senha</label>
+                        <input type="password" class="form-control" formControlName="confirmacao_senha" (keyup)="conferirSenha()" required placeholder="Confirmação da Senha">
+                        <span class="text-danger text-center pl-2">{{avisoSenhaAux}}</span>
+                    </div>
                 </div>
             </div>
-            <div class="col-sm">
-                <div class="form-group">
-                    <label for="formGroupExampleInput">Data de Nascimento</label>
-                    <input type="date" class="form-control" id="data" required placeholder="data" value="1978-05-28">
-                </div>
-            </div>
-        </div>
-        <hr>
-        <div class="row  justify-content-center">
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <input type="text" class="form-control" id="nome" required placeholder="CNPJ" value="54.254.683/0001-32">
-                </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-sm">
-                <div class="form-group">
-                    <label for="formGroupExampleInput">Estabelecimento</label>
-                    <input type="text" class="form-control" id="nome" required placeholder="Razão Social do Estabelecimento" value="Restaurante Silvas">
+            <hr>
+            <div class="row justify-content-center ">
+                <div class="col-sm-4 ">
+                    <div class="form-group ">
+                        <input type="text" class="form-control " formControlName="cnpj" required placeholder="CNPJ " readonly>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-sm-2">
-                <div class="form-group">
-                    <label for="formGroupExampleInput">CEP</label>
-                    <input type="text" class="form-control" id="cep" required placeholder="CEP" value="36548-258">
+            <div class="row ">
+                <div class="col-sm ">
+                    <div class="form-group ">
+                        <label for="formGroupExampleInput ">Estabelecimento</label>
+                        <input type="text" class="form-control " formControlName="razao_social" placeholder="Razão Social do Estabelecimento ">
+                    </div>
                 </div>
             </div>
-            <div class="col-sm-2">
-                <div class="form-group">
-                    <label for="formGroupExampleInput">Estado</label>
-                    <input type="text" class="form-control" id="nome" required placeholder="Estado" value="MG">
-                </div>
-            </div>
-            <div class="col-sm">
-                <div class="form-group">
-                    <label for="formGroupExampleInput">Cidade</label>
-                    <input type="text" class="form-control" id="nome" required placeholder="Cidade" value="Belo Horizonte">
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <label for="formGroupExampleInput">Rua</label>
-                    <input type="text" class="form-control" id="nome" required placeholder="Rua" value="Rua Maravilha">
-                </div>
-            </div>
-            <div class="col-sm-2">
-                <div class="form-group">
-                    <label for="formGroupExampleInput">Número</label>
-                    <input type="text" class="form-control" id="nome" required placeholder="Número" value="115B">
-                </div>
-            </div>
-            <div class="col-sm">
-                <div class="form-group">
-                    <label for="formGroupExampleInput">Complemento</label>
-                    <input type="text" class="form-control" id="nome" required placeholder="Complemento" value="Em frente ao supermecado BH">
-                </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-sm-10 mt-2 w-100">
-                <button class="btn btn-primary w-100" style="cursor:pointer">Salvar</button>
+            <div class="row ">
+                <div class="col-sm-2 ">
+                    <div class="form-group ">
+                        <label for="formGroupExampleInput ">CEP</label>
+                        <input type="text" class="form-control " formControlName="cep" placeholder="CEP ">
+                    </div>
+                </div>
+                <div class="col-sm-2 ">
+                    <div class="form-group ">
+                        <label for="formGroupExampleInput ">Estado</label>
+                        <input type="text" class="form-control " formControlName="estado" placeholder="Estado ">
+                    </div>
+                </div>
+                <div class="col-sm ">
+                    <div class="form-group ">
+                        <label for="formGroupExampleInput ">Cidade</label>
+                        <input type="text" class="form-control " formControlName="cidade" placeholder="Cidade ">
+                    </div>
+                </div>
             </div>
-            <div class="col-sm-2 mt-2">
-                <button class="btn btn-danger w-100" style="cursor:pointer">Deletar</button>
+            <div class="row ">
+                <div class="col-sm-4 ">
+                    <div class="form-group ">
+                        <label for="formGroupExampleInput ">Rua</label>
+                        <input type="text" class="form-control " formControlName="rua" placeholder="Rua ">
+                    </div>
+                </div>
+                <div class="col-sm-2 ">
+                    <div class="form-group ">
+                        <label for="formGroupExampleInput ">Número</label>
+                        <input type="text" class="form-control " formControlName="numero" placeholder="Número ">
+                    </div>
+                </div>
+                <div class="col-sm ">
+                    <div class="form-group ">
+                        <label for="formGroupExampleInput ">Complemento</label>
+                        <input type="text" class="form-control " formControlName="complemento" placeholder="Complemento ">
+                    </div>
+                </div>
             </div>
-        </div>
+            <div class="row">
+                <div class="col-sm">
+                    <div class="form-group ">
+                        <label for="formGroupExampleInput ">Restaurante</label>
+                        <textarea rows="3" type="text" class="form-control w-100" formControlName="descricao" placeholder="Conte um pouco sobre o restaurante"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="erro" id="erroRegistro">
+                <div class="col-sm text-center">
+                    <div class="form-group bg-danger border border-danger rounded">
+                        <label class="text-white pt-2">{{erro}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="sucesso" id="sucessoRegistro">
+                <div class="col-sm text-center">
+                    <div class="form-group bg-success border border-white rounded">
+                        <label class="text-white pt-2">{{sucesso}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mt-3 ">
+                <div class="col-sm">
+                    <div class="row">
+                        <div class="col-sm-10 mt-2 w-100">
+                            <button type="submit" id="btnEditar" class="btn btn-primary w-100" style="cursor:pointer">Salvar</button>
+                        </div>
+                        <div class="col-sm-2 mt-2">
+                            <button type="submit" class="btn btn-danger w-100" style="cursor:pointer">Deletar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </section>
 <!-- .section -->
