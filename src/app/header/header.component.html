@@ -1,7 +1,7 @@
 <header role="banner" class="pt-0" id="header">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark" style="background-color: #343a40 !important;border-bottom: 4px solid #ff7404;">
         <div class="container">
-            <a class="navbar-brand" href="index.html">ChatFood</a>
+            <a class="navbar-brand" [routerLink]="['/']">ChatFood</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -19,9 +19,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#comentarios">Comentários</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/registro']" routerLinkActive="active">Cadastrar</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#blog">Blog</a>

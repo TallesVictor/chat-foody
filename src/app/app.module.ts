@@ -5,7 +5,6 @@ import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
-import { SystemComponent } from './views/system/system.component';
 import { RegistroComponent } from './views/registro/registro.component';
 import { EditarComponent } from './views/editar/editar.component';
 import { CadCardapioComponent } from './views/cad-cardapio/cad-cardapio.component';
@@ -22,7 +21,6 @@ import { EditarItemComponent } from './views/editar-item/editar-item.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    SystemComponent,
     RegistroComponent,
     EditarComponent,
     CadCardapioComponent,

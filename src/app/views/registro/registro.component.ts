@@ -27,43 +27,34 @@ export class RegistroComponent implements OnInit {
     private userService: UserService
   ) {
     this.cadastrarForm = fb.group({
-      proprietario: ['Talles V', [Validators.required]],
-      email: ['talles@talless.com', [Validators.email, Validators.required]],
-      senha: ['teste', [Validators.required, Validators.minLength(4)]],
-      confirmacao_senha: [
-        'teste',
-        [Validators.required, Validators.minLength(4)],
-      ],
-      telefone: [
-        '31998333325',
-        [Validators.required, Validators.minLength(11)],
-      ],
+      proprietario: ['', [Validators.required]],
+      email: ['', [Validators.email, Validators.required]],
+      senha: ['', [Validators.required, Validators.minLength(4)]],
+      confirmacao_senha: ['', [Validators.required, Validators.minLength(4)]],
+      telefone: ['', [Validators.required, Validators.minLength(11)]],
       descricao: [
-        'Restaurante dedicado ao conforto da familia e seu bem estar, vem tambem',
+        '',
         [
           Validators.required,
           Validators.minLength(50),
           Validators.maxLength(1000),
         ],
       ],
-      cnpj: [
-        '25.025.342/0001-97',
-        [Validators.required, LIBRARY.cnpjValidation],
-      ],
-      razao_social: ['444444', [Validators.required]],
+      cnpj: ['', [Validators.required, LIBRARY.cnpjValidation]],
+      razao_social: ['', [Validators.required]],
       cep: [
-        '32672-138',
+        '',
         [
           Validators.required,
           Validators.minLength(8),
           Validators.maxLength(10),
         ],
       ],
-      estado: ['333', [Validators.required]],
-      cidade: ['333', [Validators.required]],
-      numero: ['333', [Validators.required]],
-      rua: ['4444', [Validators.required]],
-      complemento: ['sssss', []],
+      estado: ['', [Validators.required]],
+      cidade: ['', [Validators.required]],
+      numero: ['', [Validators.required]],
+      rua: ['', [Validators.required]],
+      complemento: ['', []],
     });
   }
 
