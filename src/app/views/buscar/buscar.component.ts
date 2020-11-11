@@ -20,28 +20,31 @@ export class BuscarComponent implements OnInit {
   ngOnInit(): void {}
 
   search(): void {
-    if(this.pesquisar){
-    $('#icone').removeClass('fa-search fa-2x');
-    $('#icone').addClass('fa-spinner fa-spin fa-2x');
-    this.buscarService.buscar(this.pesquisar).subscribe(
-      (data) => {
-        this.buscar = data;
-        $('#icone').removeClass('fa-spinner fa-spin fa-2x');
-        $('#icone').addClass('fa-search fa-2x');
-      },
-      (error) => {
-        if (error.status == '404') {
-          this.erro = 'Dados não encontrados, faça outra pesquisa =D';
-        } else {
-          this.erro = 'Erro não identificado =C';
+    if (this.pesquisar) {
+      $('#icone').removeClass('fa-search fa-2x');
+      $('#icone').addClass('fa-spinner fa-spin fa-2x');
+      this.buscarService.buscar(this.pesquisar).subscribe(
+        (data) => {
+          if (!data) {
+            this.erro = 'Dados não encontrados, faça outra pesquisa =D';
+          }
+          this.buscar = data;
+          $('#icone').removeClass('fa-spinner fa-spin fa-2x');
+          $('#icone').addClass('fa-search fa-2x');
+        },
+        (error) => {
+          if (error.status == '404') {
+            this.erro = 'Dados não encontrados, faça outra pesquisa =D';
+          } else {
+            this.erro = 'Erro não identificado =C';
+          }
+          $('#icone').removeClass('fa-spinner fa-spin fa-2x');
+          $('#icone').addClass('fa-search fa-2x');
         }
-        $('#icone').removeClass('fa-spinner fa-spin fa-2x');
-        $('#icone').addClass('fa-search fa-2x');
-      }
-    );
-  }else{
-    this.erro = 'Preencha o campo para a pesquisa =D';
-  }
+      );
+    } else {
+      this.erro = 'Preencha o campo para a pesquisa =D';
+    }
   }
 
   prato(id: number): void {
