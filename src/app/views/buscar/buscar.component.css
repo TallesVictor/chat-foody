@@ -1,0 +1,10 @@
+.pratos {
+    transition: transform .98s ease;
+}
+
+.pratos :hover {
+    background-color: #ffe9d9;
+    transform: scale(1.03);
+    -ms-transform: scale(1.03);
+    -webkit-transform: scale(1.03);
+}

@@ -16,6 +16,7 @@ import { FooterComponent } from './footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CadastrarItemComponent } from './views/cadastrar-item/cadastrar-item.component';
 import { EditarItemComponent } from './views/editar-item/editar-item.component';
+import { BuscarComponent } from './views/buscar/buscar.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { EditarItemComponent } from './views/editar-item/editar-item.component';
     FooterComponent,
     CadastrarItemComponent,
     EditarItemComponent,
+    BuscarComponent,
   ],
   imports: [
     BrowserModule,

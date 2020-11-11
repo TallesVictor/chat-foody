@@ -1,0 +1,42 @@
+<section class="section bg-light  top-slant-white bottom-slant-gray">
+
+    <div class="clearfix mb-5 pb-5">
+        <div class="container-fluid">
+            <div class="row" data-aos="fade">
+                <div class="col-md-12 text-center heading-wrap">
+                    <h2>Pesquisar</h2>
+                </div>
+            </div>
+            <div class="row justify-content-md-center" data-aos="fade">
+                <div class="col-md-4 heading-wrap pr-0">
+                    <input type="text" class="form-control" placeholder="Pesquisar" name="pesquisar" [(ngModel)]="pesquisar">
+                </div>
+                <div class="col-md-1 heading-wrap pl-0">
+                    <button class="btn btn-primary h-100 pt-0 pb-0" (click)="search()"><i class="fas fa-search fa-2x" id="icone"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="row no-gutters">
+            <div class="col-md-6 pratos" *ngFor="let busca of buscar; index as i;">
+                <div class="sched d-block d-lg-flex" (click)="prato(busca.prato_id)">
+                    <div class="bg-image order-2" style="background-image: url('{{busca.url}}');" data-aos="fade"></div>
+                    <div class="text order-1 ">
+                        <h6 title="Restaurante">{{busca.restaurante}}</h6>
+                        <h6 title="Cardápio" class="text-dark">{{busca.cardapio}}</h6>
+                        <h3>{{busca.nome}}</h3>
+                        <ul *ngFor="let ingrediente of busca.ingredientes;">
+                            <li>{{ingrediente}}</li>
+                        </ul>
+                        <p class="text-primary h3">R$ {{busca.preco}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- .section -->
