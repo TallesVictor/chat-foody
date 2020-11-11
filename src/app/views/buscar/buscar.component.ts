@@ -27,12 +27,15 @@ export class BuscarComponent implements OnInit {
         (data) => {
           if (!data) {
             this.erro = 'Dados não encontrados, faça outra pesquisa =D';
+          } else {
+            this.buscar = data;
+            $('#icone').removeClass('fa-spinner fa-spin fa-2x');
+            $('#icone').addClass('fa-search fa-2x');
+            this.erro = '';
           }
-          this.buscar = data;
-          $('#icone').removeClass('fa-spinner fa-spin fa-2x');
-          $('#icone').addClass('fa-search fa-2x');
         },
         (error) => {
+          this.buscar = null;
           if (error.status == '404') {
             this.erro = 'Dados não encontrados, faça outra pesquisa =D';
           } else {
@@ -44,6 +47,7 @@ export class BuscarComponent implements OnInit {
       );
     } else {
       this.erro = 'Preencha o campo para a pesquisa =D';
+      this.buscar = null;
     }
   }
 
