@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'editar', component: EditarComponent,  canActivate: [ AuthGuardService] },
   { path: 'cad-cardapio', component: CadCardapioComponent,  canActivate: [ AuthGuardService] },
   { path: 'item/:id', component: ItemComponent },
-  { path: 'cardapio/:id', component: CardapioComponent },
+  { path: 'cardapio/:id', component: CardapioComponent, canActivate: [ AuthGuardService] },
   { path: 'restaurante', component: RestauranteComponent },
   { path: 'cadastrar-item', component: CadastrarItemComponent,  canActivate: [ AuthGuardService] },
   { path: 'editar-item/:id', component: EditarItemComponent,  canActivate: [ AuthGuardService]}
