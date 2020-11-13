@@ -62,7 +62,6 @@ export class EditarComponent implements OnInit {
   editar(): void {
     LIBRARY.carregando();
     const jsonRegistro = this.cadastrarForm.getRawValue();
-    console.log(jsonRegistro);
     this.userService.editar(jsonRegistro).subscribe(
       (data) => {
         this.sucesso = 'Sucesso ao editar';
