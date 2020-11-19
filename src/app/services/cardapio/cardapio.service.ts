@@ -75,15 +75,6 @@ export class CardapioService {
 
   constructor(private http: HttpClient) {
 
-    this.teste().subscribe(
-      (data) => {
-      console.log(data);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-
   }
 
   teste(): Observable<any> {
@@ -101,8 +92,6 @@ export class CardapioService {
   }
 
   cadastrar(item: Cardapio): Observable<any>{
-    //const id = this.cardapio.length + 2;
-    //item.id = id;
     const codigo = new Date().getMilliseconds();
     item.id = Number(codigo);
 
@@ -125,7 +114,6 @@ export class CardapioService {
   }
 
   deletar(id: number): Observable<any>{
-    console.log(id);
     return this.http.delete(`${URL_API}/cardapio/apagar/` + id, httpOptions);
   }
 
