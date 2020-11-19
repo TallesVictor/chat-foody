@@ -12,6 +12,7 @@ import { CadastrarItemComponent } from './views/cadastrar-item/cadastrar-item.co
 import { EditarItemComponent } from './views/editar-item/editar-item.component';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { BuscarComponent } from './views/buscar/buscar.component';
+import { MenuComponent } from './views/menu/menu.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,7 +21,7 @@ const routes: Routes = [
   { path: 'editar', component: EditarComponent,  canActivate: [ AuthGuardService] },
   { path: 'cad-cardapio', component: CadCardapioComponent,  canActivate: [ AuthGuardService] },
   { path: 'item/:id', component: ItemComponent },
-  { path: 'cardapio/:id', component: CardapioComponent, canActivate: [ AuthGuardService] },
+  { path: 'menu/:id', component: MenuComponent },
   { path: 'restaurante', component: RestauranteComponent },
   { path: 'cadastrar-item', component: CadastrarItemComponent,  canActivate: [ AuthGuardService] },
   { path: 'editar-item/:id', component: EditarItemComponent,  canActivate: [ AuthGuardService]}

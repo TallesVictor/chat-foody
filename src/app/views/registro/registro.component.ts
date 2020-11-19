@@ -72,7 +72,6 @@ export class RegistroComponent implements OnInit {
     };
     this.userService.salvar(jsonLogin).subscribe(
       (data) => {
-        console.log(data);
 
         jsonRegistro.user = data.user;
         this.restauranteServ.salvar(jsonRegistro).subscribe(
