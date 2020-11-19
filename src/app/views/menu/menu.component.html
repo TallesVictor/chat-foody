@@ -1,0 +1,73 @@
+<div class="slider-wrap">
+
+    <section class="section bg-light top-slant-white bottom-slant-gray">
+
+        <div class="clearfix  pt-2 pb-3">
+            <div class="container-fluid">
+                <div class="row" data-aos="fade">
+                    <div class="col-md-12 text-center heading-wrap">
+                        <h2>Menu</h2>
+                        <p><button data-toggle="modal" data-target="#modalMenu" class="btn btn-primary btn-sm mt-5">Novo Item</button></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 mt-3" *ngFor="let item of menu">
+                    <div class="row">
+                        <div class="col-sm">
+                            <input type="text" class="form-control" name="nome" value="{{item.nome}}" readonly>
+                        </div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-sm">
+                            <textarea class="form-control" name="descricao" value="{{item.descricao}}" readonly></textarea>
+                        </div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-sm-7 pr-0">
+                            <button class="btn btn-primary w-100 h-100" (click)="editar(item.id)">Editar</button>
+                        </div>
+                        <div class="col-sm-5 pl-2">
+                            <button class="btn btn-danger w-100 h-100" (click)="excluir(item.id)">Excluir</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalMenu" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Cadastrar Menu</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <form [formGroup]="cadastrarForm" (ngSubmit)="salvar()">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm">
+                            <input type="text" class="form-control" id="nome" name="nome" formControlName="nome" placeholder="Nome" required>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-sm">
+                            <textarea class="form-control" name="descricao" formControlName="descricao" placeholder="Descrição" required></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
