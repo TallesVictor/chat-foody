@@ -1,4 +1,4 @@
-import { AbstractControl, FormControl } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import * as $ from 'jquery';
 export class LIBRARY {
   static cnpjValidation(value: AbstractControl): { [key: string]: boolean } {
@@ -74,5 +74,23 @@ export class LIBRARY {
   }
   static ocultar(): void {
     $('#carregando').hide();
+  }
+
+  static verificar(name: string, valid: any, message: string, form: FormGroup): void {
+    let html = null;
+    const verificacao =
+      (form.get(name).errors?.required ||
+        form.get(name).errors?.minlength ||
+        form.get(name).errors?.maxlength) &&
+      (form.get(name).touched || valid);
+
+    if (verificacao) {
+      html = `<div class="col-sm-12">
+                    <div class="alert alert-danger">
+                        Informe ${message} corretamente!
+                    </div>
+                </div>`;
+    }
+    return html;
   }
 }

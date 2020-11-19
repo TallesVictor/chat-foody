@@ -14,7 +14,7 @@ import { MenuService } from 'src/app/services/menu/menu.service';
 export class MenuComponent implements OnInit {
   public cadastrarForm: FormGroup;
   private cnpj: string;
-  private menu: Array<Menu>;
+  public menu: Array<Menu>;
 
   constructor(
     private fb: FormBuilder,
@@ -37,10 +37,10 @@ export class MenuComponent implements OnInit {
     LIBRARY.carregando();
     this.menuService.list(this.cnpj).subscribe(
       (data) => {
-        LIBRARY.ocultar();
         this.menu = data;
         this.cadastrarForm.get('nome').setValue('');
         this.cadastrarForm.get('descricao').setValue('');
+        LIBRARY.ocultar();
       },
       (error) => {
         LIBRARY.ocultar();
@@ -51,11 +51,16 @@ export class MenuComponent implements OnInit {
 
   salvar(): void {
     LIBRARY.carregando();
+    if (this.cadastrarForm.invalid || this.cadastrarForm.pending) {
+      LIBRARY.ocultar();
+      return;
+    }
+
     const json = this.cadastrarForm.getRawValue();
     this.menuService.salvar(json).subscribe(
       (data) => {
-        LIBRARY.ocultar();
         this.list();
+        LIBRARY.ocultar();
       },
       (error) => {
         LIBRARY.ocultar();
@@ -63,6 +68,11 @@ export class MenuComponent implements OnInit {
       }
     );
   }
+
   editar(id: number): void {}
+
   excluir(id: number): void {}
+  verificar(name, valid, message): void {
+    return LIBRARY.verificar(name, valid, message, this.cadastrarForm);
+  }
 }

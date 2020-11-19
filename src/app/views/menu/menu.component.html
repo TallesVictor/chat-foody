@@ -50,17 +50,20 @@
           <span aria-hidden="true">&times;</span>
         </button>
             </div>
-            <form [formGroup]="cadastrarForm" (ngSubmit)="salvar()">
+            <form #form="ngForm" [formGroup]="cadastrarForm" (ngSubmit)="salvar()">
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-sm">
-                            <input type="text" class="form-control" id="nome" name="nome" formControlName="nome" placeholder="Nome" required>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="nome" formControlName="nome" placeholder="Nome" required>
                         </div>
+
+                        <div class="w-100" [innerHTML]="verificar('nome', form.submitted, 'o nome')"></div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-sm">
                             <textarea class="form-control" name="descricao" formControlName="descricao" placeholder="Descrição" required></textarea>
                         </div>
+                        <div class="w-100" [innerHTML]="verificar('descricao', form.submitted, 'a descrição')"></div>
                     </div>
                 </div>
                 <div class="modal-footer">

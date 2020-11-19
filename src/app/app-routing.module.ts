@@ -6,7 +6,6 @@ import { RegistroComponent } from './views/registro/registro.component';
 import { EditarComponent } from './views/editar/editar.component';
 import { CadCardapioComponent } from './views/cad-cardapio/cad-cardapio.component';
 import { ItemComponent } from './views/item/item.component';
-import { CardapioComponent } from './views/cardapio/cardapio.component';
 import { RestauranteComponent } from './views/restaurante/restaurante.component';
 import { CadastrarItemComponent } from './views/cadastrar-item/cadastrar-item.component';
 import { EditarItemComponent } from './views/editar-item/editar-item.component';
