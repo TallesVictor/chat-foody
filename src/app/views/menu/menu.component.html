@@ -7,7 +7,7 @@
                 <div class="row" data-aos="fade">
                     <div class="col-md-12 text-center heading-wrap">
                         <h2>Menu</h2>
-                        <p><button data-toggle="modal" data-target="#modalMenu" class="btn btn-primary btn-sm mt-5">Novo Item</button></p>
+                        <p><button data-toggle="modal" (click)="open(modalCadMenu)" class="btn btn-primary btn-sm mt-5">Novo Item</button></p>
                     </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
                     </div>
                     <div class="row mt-1">
                         <div class="col-sm-7 pr-0">
-                            <button class="btn btn-primary w-100 h-100" (click)="editar(item.id)">Editar</button>
+                            <button class="btn btn-primary w-100 h-100" (click)="editar(item.id, item.nome, item.descricao, modalCadMenu)">Editar</button>
                         </div>
                         <div class="col-sm-5 pl-2">
                             <button class="btn btn-danger w-100 h-100" (click)="excluir(item.id)">Excluir</button>
@@ -41,36 +41,34 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="modalMenu" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Cadastrar Menu</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<ng-template #modalCadMenu let-modal>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Cadastrar Menu</h5>
+            <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-            </div>
-            <form #form="ngForm" [formGroup]="cadastrarForm" (ngSubmit)="salvar()">
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" name="nome" formControlName="nome" placeholder="Nome" required>
-                        </div>
-
-                        <div class="w-100" [innerHTML]="verificar('nome', form.submitted, 'o nome')"></div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-sm">
-                            <textarea class="form-control" name="descricao" formControlName="descricao" placeholder="Descrição" required></textarea>
-                        </div>
-                        <div class="w-100" [innerHTML]="verificar('descricao', form.submitted, 'a descrição')"></div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="submit" class="btn btn-primary">Salvar</button>
-                </div>
-            </form>
         </div>
+        <form #form="ngForm" [formGroup]="cadastrarForm" (ngSubmit)="salvar()">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control" name="nome" formControlName="nome" placeholder="Nome" required>
+                    </div>
+
+                    <div class="w-100" [innerHTML]="verificar('nome', form.submitted, 'o nome')"></div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-sm">
+                        <textarea class="form-control" name="descricao" formControlName="descricao" placeholder="Descrição" required></textarea>
+                    </div>
+                    <div class="w-100" [innerHTML]="verificar('descricao', form.submitted, 'a descrição')"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="close()">Fechar</button>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+        </form>
     </div>
-</div>
+</ng-template>
