@@ -31,7 +31,7 @@
                         <ul *ngFor="let ingrediente of busca.ingredientes;">
                             <li>{{ingrediente}}</li>
                         </ul>
-                        <p class="text-primary h3">R$ {{busca.preco}}</p>
+                        <p class="text-primary h3">{{busca.preco | currency:'BRL' }}</p>
                     </div>
                 </div>
             </div>

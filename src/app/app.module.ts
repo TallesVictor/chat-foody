@@ -1,9 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from "@angular/common/http";
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+import { LOCALE_ID } from '@angular/core';
+import localePt from '@angular/common/locales/pt';
+import {registerLocaleData} from '@angular/common';
+
 import { HomeComponent } from './views/home/home.component';
 import { RegistroComponent } from './views/registro/registro.component';
 import { EditarComponent } from './views/editar/editar.component';
@@ -18,6 +22,7 @@ import { CadastrarItemComponent } from './views/cadastrar-item/cadastrar-item.co
 import { EditarItemComponent } from './views/editar-item/editar-item.component';
 import { BuscarComponent } from './views/buscar/buscar.component';
 import { MenuComponent } from './views/menu/menu.component';
+registerLocaleData(localePt)
 
 @NgModule({
   declarations: [
@@ -41,9 +46,15 @@ import { MenuComponent } from './views/menu/menu.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+
+    {
+      provide: LOCALE_ID,
+      useValue: "pt-BR"
+  },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
