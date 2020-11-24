@@ -8,3 +8,10 @@
     -ms-transform: scale(1.03);
     -webkit-transform: scale(1.03);
 }
+
+.component {
+    border-right: 0px;
+    border-top: 0px;
+    border-left: 0px;
+    border-bottom: 1px solid #ffd9ba;
+}

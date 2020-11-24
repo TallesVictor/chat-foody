@@ -22,16 +22,16 @@
 
         <div class="row no-gutters">
             <div class="col-md-6 pratos" *ngFor="let busca of buscar; index as i;">
-                <div class="sched d-block d-lg-flex" (click)="prato(busca.prato_id)">
+                <div class="sched d-block d-lg-flex component" (click)="prato(busca.prato_id)">
                     <div class="bg-image order-2" style="background-image: url('{{busca.url}}');" data-aos="fade"></div>
                     <div class="text order-1 ">
                         <h6 title="Restaurante">{{busca.restaurante}}</h6>
                         <h6 title="Cardápio" class="text-dark">{{busca.cardapio}}</h6>
                         <h3>{{busca.nome}}</h3>
-                        <ul *ngFor="let ingrediente of busca.ingredientes;">
+                        <ul class="m-0" *ngFor="let ingrediente of busca.ingredientes;">
                             <li>{{ingrediente}}</li>
                         </ul>
-                        <p class="text-primary h3">{{busca.preco | currency:'BRL' }}</p>
+                        <p class="text-primary h3 mt-3">{{busca.preco | currency:'BRL' }}</p>
                     </div>
                 </div>
             </div>
