@@ -7,7 +7,7 @@
                 <div class="row" data-aos="fade">
                     <div class="col-md-12 text-center heading-wrap">
                         <h2>Menu</h2>
-                        <p><button data-toggle="modal" (click)="open(modalCadMenu)" class="btn btn-primary btn-sm mt-5">Novo Item</button></p>
+                        <p><button data-toggle="modal" (click)="open(modalCadMenu)" class="btn btn-primary btn-sm mt-5">Novo Item <i class="fas fa-plus"></i></button></p>
                     </div>
                 </div>
             </div>
@@ -16,6 +16,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-4 mt-3" *ngFor="let item of menu">
+                    <div class="row mb-1">
+                        <div class="col-sm">
+                            <button class="btn btn-primary w-100 h-100" (click)="ver(item.id)">Ver <i class="fas fa-eye"></i></button>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-sm">
                             <input type="text" class="form-control" name="nome" value="{{item.nome}}" readonly>
@@ -28,10 +33,10 @@
                     </div>
                     <div class="row mt-1">
                         <div class="col-sm-7 pr-0">
-                            <button class="btn btn-primary w-100 h-100" (click)="editar(item.id, item.nome, item.descricao, modalCadMenu)">Editar</button>
+                            <button class="btn btn-dark w-100 h-100" (click)="editar(item.id, item.nome, item.descricao, modalCadMenu)">Editar <i class="fas fa-edit"></i></button>
                         </div>
                         <div class="col-sm-5 pl-2">
-                            <button class="btn btn-danger w-100 h-100" (click)="excluir(item.id)">Excluir</button>
+                            <button class="btn btn-danger w-100 h-100" (click)="excluir(item.id)">Excluir <i class="fas fa-trash"></i></button>
                         </div>
                     </div>
                 </div>
@@ -44,7 +49,7 @@
 <ng-template #modalCadMenu let-modal>
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalCenterTitle">Cadastrar Menu</h5>
+            <h5 class="modal-title" id="exampleModalCenterTitle">Controle - Menu</h5>
             <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

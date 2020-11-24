@@ -7,9 +7,8 @@ import { URL_API, TOKEN } from '../../app.api';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    // 'Content-Type': 'application/json',
+    'Content-Type': 'application/json',
     Accept: 'application/json',
-    'Content-Type': 'multipart/form-data',
     Authorization: TOKEN,
   }),
 };

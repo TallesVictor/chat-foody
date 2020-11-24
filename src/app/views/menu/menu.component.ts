@@ -65,7 +65,7 @@ export class MenuComponent implements OnInit {
     if (this.cadastrarForm.get('codigo').value) {
       acao = this.menuService.editar(json);
     } else {
-      acao = this.menuService.salvar(json);
+    acao = this.menuService.salvar(json);
     }
     acao.subscribe(
       (data) => {
@@ -112,7 +112,7 @@ export class MenuComponent implements OnInit {
   }
 
   encodeImageFileAsURL() {
-    let element = (document.getElementById('file') as HTMLInputElement);
+    let element = document.getElementById('file') as HTMLInputElement;
     let file = element.files[0];
     let reader = new FileReader();
     reader.onloadend = function () {
@@ -120,4 +120,6 @@ export class MenuComponent implements OnInit {
     };
     reader.readAsDataURL(file);
   }
+
+  ver(id: number): void {}
 }
