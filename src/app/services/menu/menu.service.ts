@@ -34,8 +34,8 @@ export class MenuService {
     );
   }
 
-  list(cnpj): Observable<Menu[]> {
-    return this.http.get<Menu[]>(`${URL_API}/cardapio/${cnpj}`, httpOptions);
+  list(): Observable<Menu[]> {
+    return this.http.get<Menu[]>(`${URL_API}/cardapio`, httpOptions);
   }
 
   apagar(id): Observable<Number> {

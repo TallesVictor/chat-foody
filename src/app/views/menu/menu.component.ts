@@ -24,12 +24,10 @@ export class MenuComponent implements OnInit {
     private route: ActivatedRoute,
     private modalService: NgbModal
   ) {
-    this.cnpj = this.route.snapshot.params['id'];
     this.cadastrarForm = fb.group({
       nome: ['', [Validators.required]],
       codigo: [''],
-      descricao: ['', [Validators.required]],
-      cnpj: [this.cnpj, [Validators.required]],
+      descricao: ['', [Validators.required]]
     });
 
     this.list();
@@ -39,7 +37,7 @@ export class MenuComponent implements OnInit {
 
   list(): void {
     LIBRARY.carregando();
-    this.menuService.list(this.cnpj).subscribe(
+    this.menuService.list().subscribe(
       (data) => {
         this.menu = data;
         this.cadastrarForm.get('nome').setValue('');
