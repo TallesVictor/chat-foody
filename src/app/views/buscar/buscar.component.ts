@@ -51,7 +51,8 @@ export class BuscarComponent implements OnInit {
     }
   }
 
-  prato(id: number): void {
+  prato(id): void {
+    alert(id);
     this.router.navigate([`/item/${id}`]);
   }
 }

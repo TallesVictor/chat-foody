@@ -8,7 +8,7 @@
         <div class="container">
             <div class="row no-gutters">
                 <div class="col-sm-12 border bg-white pl-2 text-dark" style="border-bottom:0px !important;background-color: #fffaf5 !important;">
-                    <a [routerLink]="[ '/cardapio' ]" title="Voltar"><i class="fas fa-arrow-left"></i></a> Restaurante São Sebastião - <label style="font-size: 0.8em;">R. Alves Silva  142, Santa Lúcia - Betim</label>
+                    <a [routerLink]="[ '/cardapio' ]" title="Voltar"><i class="fas fa-arrow-left"></i></a> {{item.restaurante}} - <label style="font-size: 0.8em;">{{item.endereco}}</label>
                 </div>
             </div>
             <div class="row no-gutters">
@@ -22,7 +22,7 @@
                                     {{ingrediente}}
                                 </li>
                             </ul>
-                            <p class="text-primary h3 text-center">R${{item.valor}}</p>
+                            <p class="text-primary h3 text-center">{{item.valor | currency:'BRL'}}</p>
                         </div>
                     </div>
                 </div>
