@@ -30,6 +30,6 @@ export class ItemComponent implements OnInit {
         LIBRARY.ocultar();
         return error;
       }
-    )
+    );
   }
 }
