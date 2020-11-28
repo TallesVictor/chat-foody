@@ -7,7 +7,6 @@ import { CadCardapioComponent } from './cad-cardapio/cad-cardapio.component';
 const cardapioRoutes: Routes = [
   { path: 'cad-cardapio', component: CadCardapioComponent,  canActivate: [ AuthGuardService ] },
 ];
-
 @NgModule({
   imports: [RouterModule.forChild(cardapioRoutes)],
   exports: [RouterModule],
