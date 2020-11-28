@@ -11,13 +11,7 @@ import { CardapioService } from 'src/app/services/cardapio/cardapio.service';
 })
 export class EditarItemComponent implements OnInit {
 
-  public item: Cardapio = {
-    id: null,
-    nome: null,
-    ingredientes: null,
-    descricao: null,
-    valor: 0.0
-  };
+  public item: Cardapio;
 
   constructor(private routerActive: ActivatedRoute, private router: Router, private cardapioService: CardapioService ) {
     const id = Number(this.routerActive.snapshot.paramMap.get('id'));

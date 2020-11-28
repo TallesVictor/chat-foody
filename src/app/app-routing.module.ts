@@ -2,9 +2,7 @@ import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './views/home/home.component';
-import { RegistroComponent } from './views/registro/registro.component';
-import { EditarComponent } from './views/editar/editar.component';
-import { CadCardapioComponent } from './views/cad-cardapio/cad-cardapio.component';
+import { RegistroComponent } from './modules/registro/registro.component';
 import { ItemComponent } from './views/item/item.component';
 import { RestauranteComponent } from './views/restaurante/restaurante.component';
 import { CadastrarItemComponent } from './views/cadastrar-item/cadastrar-item.component';
@@ -17,8 +15,6 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'buscar', component: BuscarComponent },
   { path: 'registro', component: RegistroComponent},
-  { path: 'editar', component: EditarComponent,  canActivate: [ AuthGuardService] },
-  { path: 'cad-cardapio', component: CadCardapioComponent,  canActivate: [ AuthGuardService] },
   { path: 'item/:id', component: ItemComponent },
   { path: 'menu', component: MenuComponent },
   { path: 'restaurante', component: RestauranteComponent },

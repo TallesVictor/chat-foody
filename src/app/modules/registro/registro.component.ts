@@ -6,9 +6,9 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 
-import { Usuario } from '../../models/usuario.model';
-import { Restaurante } from '../../models/restaurante.model';
-import { RestauranteService } from '../../services/restaurante/restaurante.service';
+import { Usuario } from './../../models/usuario.model';
+import { Restaurante } from './../../models/restaurante.model';
+import { RestauranteService } from './../../services/restaurante/restaurante.service';
 import { LIBRARY } from 'src/app/app.library';
 import { UserService } from 'src/app/services/user/user.service';
 @Component({
