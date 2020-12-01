@@ -3,10 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './views/home/home.component';
 import { RegistroComponent } from './modules/registro/registro.component';
-import { ItemComponent } from './views/item/item.component';
 import { RestauranteComponent } from './views/restaurante/restaurante.component';
-import { CadastrarItemComponent } from './views/cadastrar-item/cadastrar-item.component';
-import { EditarItemComponent } from './views/editar-item/editar-item.component';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { BuscarComponent } from './views/buscar/buscar.component';
 import { MenuComponent } from './views/menu/menu.component';
@@ -14,12 +11,14 @@ import { MenuComponent } from './views/menu/menu.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'buscar', component: BuscarComponent },
-  { path: 'registro', component: RegistroComponent},
-  { path: 'item/:id', component: ItemComponent },
+  { path: 'registro', component: RegistroComponent },
+  {
+    path: 'item/:id',
+    loadChildren: () =>
+      import('src/app/modules/item/item.module').then((m) => m.ItemModule),
+  },
   { path: 'menu', component: MenuComponent },
   { path: 'restaurante', component: RestauranteComponent },
-  { path: 'cadastrar-item', component: CadastrarItemComponent,  canActivate: [ AuthGuardService] },
-  { path: 'editar-item/:id', component: EditarItemComponent,  canActivate: [ AuthGuardService]}
 ];
 
 @NgModule({
