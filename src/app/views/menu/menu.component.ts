@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 import { Menu } from 'src/app/models/menu.model';
@@ -21,13 +21,13 @@ export class MenuComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private menuService: MenuService,
-    private route: ActivatedRoute,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private router: Router
   ) {
     this.cadastrarForm = fb.group({
       nome: ['', [Validators.required]],
       codigo: [''],
-      descricao: ['', [Validators.required]]
+      descricao: ['', [Validators.required]],
     });
 
     this.list();
@@ -63,7 +63,7 @@ export class MenuComponent implements OnInit {
     if (this.cadastrarForm.get('codigo').value) {
       acao = this.menuService.editar(json);
     } else {
-    acao = this.menuService.salvar(json);
+      acao = this.menuService.salvar(json);
     }
     acao.subscribe(
       (data) => {
@@ -119,5 +119,7 @@ export class MenuComponent implements OnInit {
     reader.readAsDataURL(file);
   }
 
-  ver(id: number): void {}
+  ver(id: number): void {
+    this.router.navigate([`cardapio/${id}`]);
+  }
 }
