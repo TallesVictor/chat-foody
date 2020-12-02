@@ -38,8 +38,8 @@ export class CardapioService {
     return this.http.get<Cardapio>(`${URL_API}/prato/` + id);
   }
 
-  getAll(): Observable<Cardapio[]> {
-    return this.http.get<Cardapio[]>(`${URL_API}/cardapio/6666000111`, httpOptions);
+  getAll(id: number): Observable<Cardapio[]>{
+    return this.http.get<Cardapio[]>(`${URL_API}/prato/` + id);
   }
 
   deletar(id: number): Observable<any>{

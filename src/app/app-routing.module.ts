@@ -7,6 +7,7 @@ import { RestauranteComponent } from './views/restaurante/restaurante.component'
 import { AuthGuardService } from './guards/auth-guard.service';
 import { BuscarComponent } from './views/buscar/buscar.component';
 import { MenuComponent } from './views/menu/menu.component';
+import { CardapioComponent } from './modules/cardapio/cardapio.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   },
   { path: 'menu', component: MenuComponent },
   { path: 'restaurante', component: RestauranteComponent },
+  { path: 'cardapio/:menu', component: CardapioComponent },
 ];
 
 @NgModule({
