@@ -14,24 +14,27 @@
         </div>
 
         <div class="container">
+
             <div class="row no-gutters">
-
-                <div class="col-md-6" *ngFor="let cardapio of cardapios; index as i;">
-
-                    <div class="sched d-block d-lg-flex">
-                        <div class="bg-image order-2" style="background-image: url('assets/img/dishes_{{i}}.jpg');" data-aos="fade"></div>
-                        <div class="text order-1">
-                            <a routerLink="/item/{{cardapio.id}}" routerLinkActive="active">
-                                <h3>{{cardapio.nome}}</h3>
-                                <p>{{cardapio.descricao}}</p>
-                            </a>
-                            <p class="text-primary h3">${{cardapio.valor}}</p>
-                            <p><a routerLink="/editar-item/{{cardapio.id}}" class="btn btn-primary btn-sm mt-5">Editar</a></p>
-                            <p><a class="btn btn-danger btn-sm text-white" (click)="deletar(cardapio.id)">Deletar</a></p>
+                <div class="col-md-6 pratos" *ngFor="let cardapio of cardapios; index as i;">
+                    <div class="sched d-block d-lg-flex component">
+                        <div class="bg-image order-2" style="background-image: url('{{cardapio.url}}');" data-aos="fade"></div>
+                        <div class="text order-1 ">
+                            <h6 title="Restaurante">{{cardapio.restaurante}}</h6>
+                            <h3>{{cardapio.nome}}</h3>
+                            <ul class="m-0" *ngFor="let ingrediente of cardapio.ingredientes;">
+                                <li>{{ingrediente}}</li>
+                            </ul>
+                            <p class="text-primary h3 mt-3">{{cardapio.valor | currency:'BRL' }}</p>
                         </div>
                     </div>
                 </div>
+
+                <div class="col-md-12 bg-danger rounded text-center" *ngIf="erro">
+                    <h5 class="text-white p-1 m-0">{{erro}}</h5>
+                </div>
             </div>
+
         </div>
     </section>
 </div>

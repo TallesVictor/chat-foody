@@ -5,5 +5,6 @@ export class Cardapio{
   public descricao: string;
   public valor: number;
   public restaurante: string;
+  public url: string;
   public endereco: string;
 }

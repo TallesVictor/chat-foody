@@ -12,14 +12,14 @@ import { CardapioService } from 'src/app/services/cardapio/cardapio.service';
 export class CardapioComponent implements OnInit {
   public cardapios: Array<Cardapio>;
   private id: number;
-
+  public erro: string;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private cardapioService: CardapioService
   ) {
     this.id = Number(this.route.snapshot.params['menu']);
-    console.log(this.id)
+    console.log(this.id);
     this.cardapioService.getAll(this.id).subscribe((data: Cardapio[]) => {
       this.cardapios = data;
     });
