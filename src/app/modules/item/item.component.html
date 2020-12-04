@@ -6,33 +6,44 @@
         </div>
         <!-- {{header.teste.length}} -->
         <div class="container">
-            <div class="row no-gutters">
-                <div class="col-sm-12 border bg-white pl-2 text-dark" style="border-bottom:0px !important;background-color: #fffaf5 !important;">
-                    <a [routerLink]="[ '/cardapio' ]" title="Voltar"><i class="fas fa-arrow-left"></i></a> {{item.restaurante}} - <label style="font-size: 0.8em;">{{item.endereco}}</label>
-                </div>
-            </div>
-            <div class="row no-gutters">
-                <div class="col-md-12">
-                    <div class="sched d-block d-lg-flex">
-                        <div class="bg-image order-2" style="background-image: url('assets/img/dishes_{{item.id}}.jpg');" data-aos="fade"></div>
-                        <div class="text order-1">
-                            <h3>{{item.nome}}</h3>
-                            <ul>
-                                <li *ngFor="let ingrediente of item.ingredientes">
-                                    {{ingrediente}}
-                                </li>
-                            </ul>
-                            <p class="text-primary h3 text-center">{{item.valor | currency:'BRL'}}</p>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+
+
+                    <div class="row no-gutters">
+                        <div class="col-sm-12 border bg-white pl-2 text-dark" style="border-bottom:0px !important;background-color: #fffaf5 !important;">
+                            <a [routerLink]="[ '/cardapio' ]" title="Voltar"><i class="fas fa-arrow-left"></i></a> {{item.restaurante}} - <label style="font-size: 0.8em;">{{item.endereco}}</label>
                         </div>
                     </div>
+                    <div class="row no-gutters">
+                        <div class="col-md-6">
+                            <div class="sched d-block d-lg-flex">
+                                <div class="text order-1 w-100">
+                                    <h3>{{item.nome}}</h3>
+                                    <ul>
+                                        <li *ngFor="let ingrediente of item.ingredientes">
+                                            {{ingrediente}}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="text-primary h2 text-center">{{item.valor | currency:'BRL'}}</p>
+                        </div>
+                        <div class="col-md no-gutters">
+                            <div class="sched d-block d-lg-flex">
+                                <img class="bg-image order-2 w-100" src="{{item.url}}" data-aos="fade">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row no-gutters">
+                        <div class="col-sm-12">
+                            <button class="btn btn-success w-100" (click)="addItem(item.id);">Adicionar&nbsp;<i class="fas fa-cart-plus"></i></button>
+                        </div>
+                    </div>
+                    <!-- <button class="btn btn-outline-primary" (click)="setItem()">text</button> -->
                 </div>
             </div>
-            <div class="row no-gutters">
-                <div class="col-sm-12">
-                    <button class="btn btn-success w-100">Adicionar&nbsp;<i class="fas fa-cart-plus"></i></button>
-                </div>
-            </div>
-            <!-- <button class="btn btn-outline-primary" (click)="setItem()">text</button> -->
         </div>
     </section>
 </div>

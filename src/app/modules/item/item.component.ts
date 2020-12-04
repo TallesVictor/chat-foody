@@ -32,4 +32,16 @@ export class ItemComponent implements OnInit {
       }
     );
   }
+
+  addItem(id: number): void {
+    if (!localStorage.getItem('ITEM')) {
+      localStorage.setItem('ITEM', JSON.stringify([]));
+    }
+
+    let item = JSON.parse(localStorage.getItem('ITEM'));
+    if (item.indexOf(id) === -1) {
+      item.push(id);
+      localStorage.setItem('ITEM', JSON.stringify(item));
+    }
+  }
 }
