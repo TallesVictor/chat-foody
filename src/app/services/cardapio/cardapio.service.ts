@@ -20,13 +20,8 @@ export class CardapioService {
   }
 
 
-  cadastrar(item: Cardapio): Observable<any>{
-    const codigo = new Date().getMilliseconds();
-    item.id = Number(codigo);
-
-    const itemPost = JSON.stringify(item);
-
-    return this.http.post(`${URL_API}/prato/create`, itemPost, httpOptions);
+  cadastrar(item: JSON): Observable<Cardapio>{
+    return this.http.post<Cardapio>(`${URL_API}/prato/create`, item, httpOptions);
   }
 
   editar(item: Cardapio): Observable<any>{
@@ -44,6 +39,10 @@ export class CardapioService {
 
   deletar(id: number): Observable<any>{
     return this.http.delete(`${URL_API}/cardapio/apagar/` + id, httpOptions);
+  }
+
+  deletarPrato(id: number): Observable<any>{
+    return this.http.delete(`${URL_API}/prato/` + id, httpOptions);
   }
 
 

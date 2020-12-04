@@ -22,8 +22,8 @@
 
         <div class="row no-gutters">
             <div class="col-md-6 pratos" *ngFor="let busca of buscar; index as i;">
-                <div class="sched d-block d-lg-flex component" (click)="prato(busca.prato_id)">
-                    <div class="bg-image order-2" style="background-image: url('{{busca.url}}');" data-aos="fade"></div>
+                <div class="h-100 sched d-block d-lg-flex component" (click)="prato(busca.prato_id)">
+                    <img class="bg-image order-2" src="{{busca.url}}" data-aos="fade">
                     <div class="text order-1 ">
                         <h6 title="Restaurante">{{busca.restaurante}}</h6>
                         <h6 title="Cardápio" class="text-dark">{{busca.cardapio}}</h6>

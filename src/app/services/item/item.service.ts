@@ -18,4 +18,5 @@ export class ItemService {
   list(id: number): Observable<Cardapio> {
     return this.http.get<Cardapio>(`${URL_API}/prato/listItens/${id}`);
   }
+
 }

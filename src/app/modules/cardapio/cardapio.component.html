@@ -7,7 +7,7 @@
                 <div class="row" data-aos="fade">
                     <div class="col-md-12 text-center heading-wrap">
                         <h2>CARDÁPIO</h2>
-                        <p><a routerLink="/cadastrar-item" class="btn btn-primary btn-sm mt-5">Novo Item</a></p>
+                        <p><button (click)="open(modalCad)" class="btn btn-primary btn-sm mt-5">Novo Item</button></p>
                     </div>
                 </div>
             </div>
@@ -18,7 +18,7 @@
             <div class="row no-gutters">
                 <div class="col-md-6 pratos" *ngFor="let cardapio of cardapios; index as i;">
                     <div class="sched d-block d-lg-flex component">
-                        <div class="bg-image order-2" style="background-image: url('{{cardapio.url}}');" data-aos="fade"></div>
+                        <img class="bg-image order-2" src="{{cardapio.url}}" data-aos="fade">
                         <div class="text order-1 ">
                             <h6 title="Restaurante">{{cardapio.restaurante}}</h6>
                             <h3>{{cardapio.nome}}</h3>
@@ -26,12 +26,13 @@
                                 <li>{{ingrediente}}</li>
                             </ul>
                             <p class="text-primary h3 mt-3">{{cardapio.valor | currency:'BRL' }}</p>
+
                             <div class="row">
                                 <div class="col-sm-6 pr-0" title="Editar prato">
-                                    <button class="btn btn-dark w-100 h-100"><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-dark w-100 h-100" type="button"><i class="fas fa-edit"></i></button>
                                 </div>
-                                <div class="col-sm-6 pl-0" title="Deletar prato">
-                                    <button class="btn btn-danger w-100 h-100"><i class="fas fa-trash"></i></button>
+                                <div class="col-sm-6 pl-0" title="Apagar prato">
+                                    <button class="btn btn-danger w-100 h-100" (click)="deletar(cardapio.id)"><i class="fas fa-trash"></i></button>
                                 </div>
                             </div>
 
@@ -49,3 +50,64 @@
         </div>
     </section>
 </div>
+
+<!-- Modal -->
+<ng-template #modalCad let-modal>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Controle - Menu</h5>
+            <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+        </div>
+        <form #form="ngForm" [formGroup]="cadastrarForm" (ngSubmit)="salvar()">
+            <div class="modal-body">
+
+                <!-- Imagem -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <input type="file" class="form-control" name="url" id="file" required>
+                    </div>
+
+                    <div class="w-100" [innerHTML]="verificar('url', form.submitted, 'a imagem')"></div>
+                </div>
+
+                <!-- Nome do prato -->
+                <div class="row mt-2">
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control" name="nome" formControlName="nome" placeholder="Nome" required>
+                    </div>
+
+                    <div class="w-100" [innerHTML]="verificar('nome', form.submitted, 'o nome')"></div>
+                </div>
+
+                <!-- Preço do prato -->
+                <div class="row mt-2">
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control" name="preco" formControlName="preco" placeholder="Preço" required>
+                    </div>
+
+                    <div class="w-100" [innerHTML]="verificar('nome', form.submitted, 'o preço')"></div>
+                </div>
+
+                <!-- Ingredientes -->
+                <div class="row mt-2">
+                    <div class="col-sm">
+                        <textarea class="form-control" name="ingredientes" formControlName="ingredientes" placeholder="Ingredientes" required></textarea>
+                    </div>
+                    <div class="ml-3 w-100">
+                        Obs: Separe cada ingrediente com <b>,</b>
+                        <p>
+                            Exemplo: <b>Arroz,Carne,Feijão</b>
+                        </p>
+                    </div>
+                    <div class="w-100" [innerHTML]="verificar('ingredientes', form.submitted, 'a descrição')"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="close()">Fechar</button>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+        </form>
+    </div>
+</ng-template>

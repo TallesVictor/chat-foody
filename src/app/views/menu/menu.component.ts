@@ -67,7 +67,7 @@ export class MenuComponent implements OnInit {
     }
     acao.subscribe(
       (data) => {
-        this.list();
+        this.menu.push(data);
         this.close();
         LIBRARY.ocultar();
       },
@@ -83,7 +83,6 @@ export class MenuComponent implements OnInit {
     this.cadastrarForm.get('nome').setValue(nome);
     this.cadastrarForm.get('descricao').setValue(descricao);
     const json = this.cadastrarForm.getRawValue();
-    console.log(json);
     this.open(modal);
   }
 
@@ -101,7 +100,6 @@ export class MenuComponent implements OnInit {
   verificar(name, valid, message): void {
     return LIBRARY.verificar(name, valid, message, this.cadastrarForm);
   }
-
   public open(content): void {
     this.modalService.open(content);
   }
