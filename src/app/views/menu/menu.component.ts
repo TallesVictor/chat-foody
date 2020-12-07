@@ -68,6 +68,9 @@ export class MenuComponent implements OnInit {
     acao.subscribe(
       (data) => {
         this.menu.push(data);
+        if (this.cadastrarForm.get('codigo').value) {
+          this.list();
+        }
         this.close();
         LIBRARY.ocultar();
       },
