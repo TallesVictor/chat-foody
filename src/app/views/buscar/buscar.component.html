@@ -22,7 +22,8 @@
 
         <div class="row no-gutters">
             <div class="col-md-6 pratos" *ngFor="let busca of buscar; index as i;">
-                <div class="h-100 sched d-block d-lg-flex component" (click)="prato(busca.prato_id)">
+                <!-- <div class="h-100 sched d-block d-lg-flex component" (click)="prato(busca.prato_id)"> -->
+                <div class="h-100 sched d-block d-lg-flex component">
                     <img class="bg-image order-2" src="{{busca.url}}" data-aos="fade">
                     <div class="text order-1 ">
                         <h6 title="Restaurante">{{busca.restaurante}}</h6>
@@ -32,6 +33,11 @@
                             <li>{{ingrediente}}</li>
                         </ul>
                         <p class="text-primary h3 mt-3">{{busca.preco | currency:'BRL' }}</p>
+                        <div class="row">
+                            <div class="col-sm pl-0" title="Remover prato">
+                                <button class="btn btn-primary w-100 h-100" (click)="addItem(busca.prato_id)"> Adicionar &nbsp;<i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

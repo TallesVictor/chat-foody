@@ -1,0 +1,48 @@
+<div class="slider-wrap">
+
+    <section class="section bg-light top-slant-white bottom-slant-gray">
+
+        <div class="clearfix  pt-2 pb-3">
+            <div class="container-fluid">
+                <div class="row" data-aos="fade">
+                    <div class="col-md-12 text-center heading-wrap">
+                        <h2>CARRINHO</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+
+            <div class="row no-gutters">
+                <div class="col-md-6 pratos" *ngFor="let cardapio of buscar; index as i;">
+                    <div class="sched d-block d-lg-flex component">
+                        <img class="bg-image order-2" src="{{cardapio.url}}" data-aos="fade">
+                        <div class="text order-1 ">
+                            <h6 title="Restaurante">{{cardapio.restaurante}}</h6>
+                            <h3>{{cardapio.nome}}</h3>
+                            <ul class="m-0" *ngFor="let ingrediente of cardapio.ingredientes;">
+                                <li>{{ingrediente}}</li>
+                            </ul>
+                            <p class="text-primary h3 mt-3">{{cardapio.preco | currency:'BRL' }}</p>
+
+                            <div class="row">
+                                <div class="col-sm pl-0" title="Remover prato">
+                                    <button class="btn btn-danger w-100 h-100" (click)="remover(cardapio.prato_id)"> Remover &nbsp;<i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div class="row no-gutters mt-3">
+                <button class="btn btn-success w-100" (click)="enviarMensagem()">Confirmar</button>
+            </div>
+
+        </div>
+    </section>
+</div>

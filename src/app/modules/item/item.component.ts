@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { LIBRARY } from 'src/app/app.library';
 import { Cardapio } from 'src/app/models/cardapio.model';
 import { ItemService } from 'src/app/services/item/item.service';
+import { CarrinhoService } from 'src/app/services/carrinho/carrinho.service';
+import * as $ from 'jquery';
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
@@ -13,7 +15,11 @@ export class ItemComponent implements OnInit {
   // public header = null;
   public item: Cardapio;
 
-  constructor(private route: ActivatedRoute, private itemService: ItemService) {
+  constructor(
+    private route: ActivatedRoute,
+    private itemService: ItemService,
+    private carrinhoService: CarrinhoService
+  ) {
     this.id = Number(this.route.snapshot.params['id']);
     this.list(this.id);
   }
@@ -34,14 +40,6 @@ export class ItemComponent implements OnInit {
   }
 
   addItem(id: number): void {
-    if (!localStorage.getItem('ITEM')) {
-      localStorage.setItem('ITEM', JSON.stringify([]));
-    }
-
-    let item = JSON.parse(localStorage.getItem('ITEM'));
-    if (item.indexOf(id) === -1) {
-      item.push(id);
-      localStorage.setItem('ITEM', JSON.stringify(item));
-    }
+    this.carrinhoService.addItem(id);
   }
 }

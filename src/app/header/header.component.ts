@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { UserService } from '../services/user/user.service';
+import { CarrinhoService } from '../services/carrinho/carrinho.service';
 import { UsuarioService } from '../services/usuario/usuario.service';
 import { Usuario } from '../models/usuario.model';
 import { Router } from '@angular/router';
@@ -14,12 +15,16 @@ import { LIBRARY } from 'src/app/app.library';
 export class HeaderComponent implements OnInit {
   private usuario: Usuario = new Usuario();
   public logado: Boolean = false;
+  public cart: number;
 
   constructor(
     private user: UserService,
     private usuarioService: UsuarioService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private carrinhoService: CarrinhoService
+  ) {
+    this.cart = carrinhoService.getItemLength();
+  }
 
   ngOnInit(): void {
     this.login();

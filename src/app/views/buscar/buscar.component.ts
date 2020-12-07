@@ -4,6 +4,7 @@ import { Buscar } from 'src/app/models/buscar.model';
 import { BuscarService } from '../../services/buscar/buscar.service';
 import * as $ from 'jquery';
 import { Router } from '@angular/router';
+import { CarrinhoService } from 'src/app/services/carrinho/carrinho.service';
 @Component({
   selector: 'app-buscar',
   templateUrl: './buscar.component.html',
@@ -13,7 +14,12 @@ export class BuscarComponent implements OnInit {
   public pesquisar: string;
   public buscar: Buscar[];
   public erro: string;
-  constructor(private buscarService: BuscarService, private router: Router) {
+
+  constructor(
+    private buscarService: BuscarService,
+    private router: Router,
+    private carrinhoService: CarrinhoService
+  ) {
     this.pesquisar = 'Arroz';
   }
 
@@ -53,5 +59,9 @@ export class BuscarComponent implements OnInit {
 
   prato(id: number): void {
     this.router.navigate([`/item/${id}`]);
+  }
+
+  addItem(id: number): void {
+    this.carrinhoService.addItem(id);
   }
 }

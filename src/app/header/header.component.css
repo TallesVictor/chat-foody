@@ -7,3 +7,13 @@
     z-index: 9999;
     background: url("src/assets/img/loading.gif") 50% 50% no-repeat white;
 }
+
+.cart-food {
+    color: #ff7404;
+}
+
+.cart-food-notify {
+    font-family: 'Courier New', Courier, monospace;
+    color: #ffffff;
+    background-color: #ff7404;
+}

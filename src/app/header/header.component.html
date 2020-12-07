@@ -19,14 +19,20 @@
                         <a class="nav-link" [routerLink]="['/buscar']" routerLinkActive="active">Buscar</a>
                     </li>
                     <!-- <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/blog']">Blog</a>
-                    </li> -->
+                    <a class="nav-link" [routerLink]="['/blog']">Blog</a>
+                  </li> -->
                     <li class="nav-item">
                         <a class="nav-link" [routerLink]="['/restaurante']" routerLinkActive="active">Sobre</a>
                     </li>
                 </ul>
+                <ul class="navbar-nav ml-auto mr-4">
+                    <li class="nav-item ">
+                        <a class="nav-link btn-outline-dark" [routerLink]="['/carrinho']" routerLinkActive="active"> <i class="fas fa-shopping-cart cart-food fa-lg"> <span class="badge badge-light cart-food-notify" id="carrinho">{{cart}}</span></i>
+                        </a>
+                    </li>
+                </ul>
 
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav">
                     <li class="nav-item cta-btn" *ngIf="!logado">
                         <a class="nav-link" onclick="$('#exampleModalCenter').modal('show');">Entrar</a>
                     </li>

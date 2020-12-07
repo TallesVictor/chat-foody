@@ -20,6 +20,7 @@ import { MenuComponent } from './views/menu/menu.component';
 
 import { RegistroModule } from './modules/registro/registro.module';
 import { CardapioModule } from './modules/cardapio/cardapio.module';
+import { CarrinhoComponent } from './views/carrinho/carrinho.component';
 
 registerLocaleData(localePt);
 
@@ -34,6 +35,7 @@ registerLocaleData(localePt);
     FooterComponent,
     BuscarComponent,
     MenuComponent,
+    CarrinhoComponent,
   ],
   imports: [
     BrowserModule,
