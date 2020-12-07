@@ -41,7 +41,7 @@ export class CarrinhoComponent implements OnInit {
   }
 
   enviarMensagem(): void {
-    const celular = '5531998333325';
+    const celular = `55${this.buscar[0].telefone}`;
 
     let texto = 'Olá, tudo bem?\nDesejo:';
 

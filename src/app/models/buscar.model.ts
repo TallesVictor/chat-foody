@@ -5,5 +5,6 @@ export class Buscar {
   nome: string;
   preco: string;
   url: string;
+  telefone: string;
   ingredientes: [];
 }
