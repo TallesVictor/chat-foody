@@ -17,7 +17,7 @@
 
             <div class="row no-gutters">
                 <div class="col-md-6 pratos" *ngFor="let cardapio of cardapios; index as i;">
-                    <div class="sched d-block d-lg-flex component">
+                    <div class="sched d-block d-lg-flex component h-100">
                         <img class="bg-image order-2" src="{{cardapio.url}}" data-aos="fade">
                         <div class="text order-1 ">
                             <h6 title="Restaurante">{{cardapio.restaurante}}</h6>
@@ -29,7 +29,7 @@
 
                             <div class="row">
                                 <div class="col-sm-6 pr-0" title="Editar prato">
-                                    <button class="btn btn-dark w-100 h-100" type="button"><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-dark w-100 h-100" type="button" (click)="editar(cardapio.id, cardapio.nome, cardapio.valor, cardapio.ingredientes,cardapio.url, modalCad)"><i class="fas fa-edit"></i></button>
                                 </div>
                                 <div class="col-sm-6 pl-0" title="Apagar prato">
                                     <button class="btn btn-danger w-100 h-100" (click)="deletar(cardapio.id)"><i class="fas fa-trash"></i></button>
@@ -61,47 +61,55 @@
       </button>
         </div>
         <form #form="ngForm" [formGroup]="cadastrarForm" (ngSubmit)="salvar()">
+            <input type="hidden" class="form-control" name="codigo" id="codigo" formControlName="codigo">
             <div class="modal-body">
-
-                <!-- Imagem -->
-                <div class="row">
-                    <div class="col-sm-12">
-                        <input type="file" class="form-control" name="url" id="file" required>
+                <div class="container">
+                    <!-- Imagem -->
+                    <div class="row text-center" *ngIf="imgEdit">
+                        <div class="col-sm-12">
+                            <img class="bg-image order-2 w-50" src="{{imgEdit}}" data-aos="fade">
+                        </div>
                     </div>
 
-                    <div class="w-100" [innerHTML]="verificar('url', form.submitted, 'a imagem')"></div>
-                </div>
+                    <div class="row mt-1">
+                        <div class="col-sm-12">
+                            <input type="file" class="form-control" name="url" id="file" required>
+                        </div>
 
-                <!-- Nome do prato -->
-                <div class="row mt-2">
-                    <div class="col-sm-12">
-                        <input type="text" class="form-control" name="nome" formControlName="nome" placeholder="Nome" required>
+                        <div class="w-100" [innerHTML]="verificar('url', form.submitted, 'a imagem')"></div>
                     </div>
 
-                    <div class="w-100" [innerHTML]="verificar('nome', form.submitted, 'o nome')"></div>
-                </div>
+                    <!-- Nome do prato -->
+                    <div class="row mt-2">
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="nome" formControlName="nome" placeholder="Nome" required>
+                        </div>
 
-                <!-- Preço do prato -->
-                <div class="row mt-2">
-                    <div class="col-sm-12">
-                        <input type="text" class="form-control" name="preco" formControlName="preco" placeholder="Preço" required>
+                        <div class="w-100" [innerHTML]="verificar('nome', form.submitted, 'o nome')"></div>
                     </div>
 
-                    <div class="w-100" [innerHTML]="verificar('nome', form.submitted, 'o preço')"></div>
-                </div>
+                    <!-- Preço do prato -->
+                    <div class="row mt-2">
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="preco" formControlName="preco" placeholder="Preço" required>
+                        </div>
 
-                <!-- Ingredientes -->
-                <div class="row mt-2">
-                    <div class="col-sm">
-                        <textarea class="form-control" name="ingredientes" formControlName="ingredientes" placeholder="Ingredientes" required></textarea>
+                        <div class="w-100" [innerHTML]="verificar('nome', form.submitted, 'o preço')"></div>
                     </div>
-                    <div class="ml-3 w-100">
-                        Obs: Separe cada ingrediente com <b>,</b>
-                        <p>
-                            Exemplo: <b>Arroz,Carne,Feijão</b>
-                        </p>
+
+                    <!-- Ingredientes -->
+                    <div class="row mt-2">
+                        <div class="col-sm">
+                            <textarea class="form-control" name="ingredientes" formControlName="ingredientes" placeholder="Ingredientes" required></textarea>
+                        </div>
+                        <div class="ml-3 w-100">
+                            Obs: Separe cada ingrediente com <b>,</b>
+                            <p>
+                                Exemplo: <b>Arroz,Carne,Feijão</b>
+                            </p>
+                        </div>
+                        <div class="w-100" [innerHTML]="verificar('ingredientes', form.submitted, 'a descrição')"></div>
                     </div>
-                    <div class="w-100" [innerHTML]="verificar('ingredientes', form.submitted, 'a descrição')"></div>
                 </div>
             </div>
             <div class="modal-footer">

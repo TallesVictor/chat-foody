@@ -21,6 +21,7 @@ export class CardapioComponent implements OnInit {
   public erro: string;
   public preco: string;
   public cadastrarForm: FormGroup;
+  public imgEdit: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,6 +33,7 @@ export class CardapioComponent implements OnInit {
     this.id = Number(this.route.snapshot.params['menu']);
 
     this.cadastrarForm = fb.group({
+      codigo: ['', []],
       nome: ['', [Validators.required]],
       cardapio_id: [this.id, [Validators.required]],
       ingredientes: ['', [Validators.required]],
@@ -49,14 +51,6 @@ export class CardapioComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-
-  // deletar(id: number) {
-  //   this.cardapioService.deletar(id).subscribe((respota: any) => {
-  //     this.cardapioService.getAll().subscribe((data: Cardapio[]) => {
-  //       this.cardapios = data;
-  //     });
-  //   });
-  // }
 
   handleFileSelect(): void {
     let element = document.getElementById('file') as HTMLInputElement;
@@ -77,9 +71,12 @@ export class CardapioComponent implements OnInit {
   verificar(name, valid, message): void {
     return LIBRARY.verificar(name, valid, message, this.cadastrarForm);
   }
+
   public open(content): void {
+    this.imgEdit = null;
     this.modalService.open(content);
   }
+
   public close(): void {
     this.modalService.dismissAll();
   }
@@ -117,6 +114,23 @@ export class CardapioComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  editar(id, nome, valor, ingredientes, url: string, modal): void {
+    this.open(modal);
+    this.imgEdit = url;
+    let listaIngredientes = '';
+    this.cadastrarForm.get('codigo').setValue(id);
+    this.cadastrarForm.get('nome').setValue(nome);
+    this.cadastrarForm.get('preco').setValue(valor);
+    ingredientes.forEach((ingrediente, count) => {
+      if (ingredientes[count + 1]) {
+        listaIngredientes += `${ingrediente} ,`;
+      } else {
+        listaIngredientes += `${ingrediente}`;
+      }
+    });
+    this.cadastrarForm.get('ingredientes').setValue(listaIngredientes);
   }
 
   deletar(id: number): any {
