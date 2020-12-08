@@ -82,6 +82,10 @@ export class CardapioComponent implements OnInit {
 
   public open(content): void {
     this.imgEdit = null;
+    this.cadastrarForm.get('id').setValue('');
+    this.cadastrarForm.get('nome').setValue('');
+    this.cadastrarForm.get('preco').setValue('');
+    this.cadastrarForm.get('ingredientes').setValue('');
     this.modalService.open(content);
   }
 
