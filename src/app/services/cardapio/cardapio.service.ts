@@ -26,7 +26,7 @@ export class CardapioService {
 
   editar(item: Cardapio): Observable<any>{
     const itemPostAlterar = JSON.stringify(item);
-    return this.http.post(`${URL_API}/cardapio/alterar`, itemPostAlterar, httpOptions);
+    return this.http.post(`${URL_API}/prato/atualizar`, itemPostAlterar, httpOptions);
   }
 
   getItemById(id: number): Observable<Cardapio>{

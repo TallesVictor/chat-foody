@@ -33,16 +33,22 @@ export class CardapioComponent implements OnInit {
     this.id = Number(this.route.snapshot.params['menu']);
 
     this.cadastrarForm = fb.group({
-      codigo: ['', []],
+      id: ['', []],
       nome: ['', [Validators.required]],
       cardapio_id: [this.id, [Validators.required]],
       ingredientes: ['', [Validators.required]],
-      url: ['', [Validators.required]],
+      url: ['', []],
       preco: [
         '',
         [Validators.required, Validators.minLength(2), Validators.maxLength(6)],
       ],
     });
+    this.list();
+  }
+
+  ngOnInit(): void {}
+
+  list(): void {
     LIBRARY.carregando();
     this.cardapioService.getAll(this.id).subscribe((data: Cardapio[]) => {
       this.cardapios = data;
@@ -50,16 +56,18 @@ export class CardapioComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
-
   handleFileSelect(): void {
     let element = document.getElementById('file') as HTMLInputElement;
     let file = element.files[0];
+    console.log('Oks');
     if (file) {
       this.typeFile = file.type;
       let reader = new FileReader();
       reader.onload = this._handleReaderLoaded.bind(this);
       reader.readAsBinaryString(file);
+    } else if (this.cadastrarForm.get('id').value) {
+      console.log('Ok');
+      this.salvar('vazio');
     }
   }
 
@@ -86,6 +94,10 @@ export class CardapioComponent implements OnInit {
       this.handleFileSelect();
       return;
     }
+
+    if (base64 === 'vazio') {
+      base64 = '';
+    }
     this.cadastrarForm.get('url').setValue(base64);
 
     LIBRARY.carregando();
@@ -93,21 +105,28 @@ export class CardapioComponent implements OnInit {
       LIBRARY.ocultar();
       return;
     }
+
     this.cadastrarForm
       .get('ingredientes')
       .setValue(this.cadastrarForm.get('ingredientes').value.split(','));
     const json = this.cadastrarForm.getRawValue();
+
     let acao;
-    // if (this.cadastrarForm.get('codigo').value) {
-    //   acao = this.menuService.editar(json);
-    // } else {
-    acao = this.cardapioService.cadastrar(json);
-    // }
+    if (this.cadastrarForm.get('id').value) {
+      acao = this.cardapioService.editar(json);
+    } else {
+      acao = this.cardapioService.cadastrar(json);
+    }
+
     acao.subscribe(
       (data) => {
-        this.cardapios.push(data);
-        this.close();
         LIBRARY.ocultar();
+        if (this.cadastrarForm.get('id').value) {
+          this.list();
+        }else{
+          this.cardapios.push(data);
+        }
+        this.close();
       },
       (error) => {
         LIBRARY.ocultar();
@@ -120,7 +139,7 @@ export class CardapioComponent implements OnInit {
     this.open(modal);
     this.imgEdit = url;
     let listaIngredientes = '';
-    this.cadastrarForm.get('codigo').setValue(id);
+    this.cadastrarForm.get('id').setValue(id);
     this.cadastrarForm.get('nome').setValue(nome);
     this.cadastrarForm.get('preco').setValue(valor);
     ingredientes.forEach((ingrediente, count) => {

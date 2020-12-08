@@ -61,7 +61,7 @@
       </button>
         </div>
         <form #form="ngForm" [formGroup]="cadastrarForm" (ngSubmit)="salvar()">
-            <input type="hidden" class="form-control" name="codigo" id="codigo" formControlName="codigo">
+            <input type="hidden" class="form-control" name="id" id="id" formControlName="id">
             <div class="modal-body">
                 <div class="container">
                     <!-- Imagem -->
@@ -73,7 +73,7 @@
 
                     <div class="row mt-1">
                         <div class="col-sm-12">
-                            <input type="file" class="form-control" name="url" id="file" required>
+                            <input type="file" class="form-control" name="url" id="file">
                         </div>
 
                         <div class="w-100" [innerHTML]="verificar('url', form.submitted, 'a imagem')"></div>
